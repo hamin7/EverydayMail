@@ -1,0 +1,32 @@
+{
+    
+    "manifest_version": 2 ,
+    "name": "MailMail",
+    "version": "1.1.0",
+    
+    "description": "메일 템플릿 관리 서비스",
+    "icons": {
+        "32": "icons/list_icon_32.png"
+    },
+
+    
+    "sidebar_action": {
+        "default_page": "index.html", 
+        "default_icon": {
+            "32" : "icons/list_icon_32.png"
+        },
+        "default_title": "매일메일", 
+        "use_navigation_bar": true 
+    }   
+    ,
+
+  
+    "background": {
+        "scripts": [
+        ]
+    },
+    "content_scripts": [
+    ],
+    "permissions": ["storage" ]
+    
+}

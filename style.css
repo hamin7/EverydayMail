@@ -1,0 +1,213 @@
+/* Font */
+@font-face{
+    font-family: NanumSquare;
+    src: url(fonts/NanumSquareR.otf);
+}
+@font-face{
+    font-family: NanumSquareL;
+    src: url(fonts/NanumSquareL.otf);
+}
+
+
+*{
+    margin:0;
+    padding:0;
+    /* box-sizing: border-box; */
+}
+
+
+body{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    background-color: white;
+    font-family: NanumSquare;
+    text-align: center; /* 추가 */
+
+    
+}
+header{
+    width:100%;
+    /* justify-content: flex-end; */
+    display: flex;
+    position: relative;
+    background-color: rgb(242, 242, 242);
+    
+}
+.logo{
+    height: 45px;
+    margin-right: auto;
+    /* vertical-align: middle; */
+
+    
+}
+.btnlist{
+/* line-height: 50px; */
+    padding: 0px 10px;
+    margin: 0px 10px;
+}
+.btnlist > button{
+    /* display: inline-block; */
+    width:6px;
+    height:6px;
+    vertical-align: middle;
+    border: none;
+    background: none;
+    margin:0px 10px
+}
+
+.template_list{
+    padding: 0px 10px
+
+}
+.row{
+    text-align:left;/* 추가 */
+    padding: 14px;
+    position: relative;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.2);
+    
+}
+.row_title{
+    color: black;
+     
+}
+
+.row_content{
+    vertical-align: middle;
+    line-height: 130%;
+    font-size: 10pt;
+    height: 33px;
+    color: black;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+     
+}
+
+a{
+    text-decoration: none;
+}
+
+
+
+
+#write_new{
+    margin:30px;
+    float:right;
+}
+
+
+#myform{
+    resize: none;
+    width: 90%;
+    height: 300px;
+    padding: 5px;
+    line-height: 120%;
+    font-size: 12pt;
+    font-family: NanumSquareL;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.2);
+}
+input[type=text] {
+    padding: 5px;
+    box-sizing: border-box;
+    border:none;
+    border-bottom: 2px solid #01D6B3;
+    text-align: center;
+    font-family: NanumSquareL;
+}
+  
+.button{
+    background-color: #01D6B3;
+    border:none;
+    color:white;
+    padding:6px 10px;
+    text-align:center;
+    text-decoration: none;
+    display: inline-block;
+    font-family: NanumSquare;
+    font-size: 12pt;
+    margin: 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+.content_description{
+    font-family: NanumSquareL;
+    font-size: 10pt;
+    margin: 10px;
+
+}
+
+/* 아래는 다  체크박스 화면 */
+.select .all_select input[type="checkbox"] {display: none;}
+
+/* 체크 안된 상태에 배경 넣기 */
+.select .all_select input[type="checkbox"] + label {
+    /* display: inline-block; */
+    width: 18px;
+    height: 18px;
+    background: #01d6b3;
+    cursor: pointer;
+    border-radius: 3px;
+    float: left;
+}
+
+.select .all_select::after {display: block; clear:both; content:"";}
+
+/*체크된 상태에 배경 넣기*/
+.select .all_select input[type="checkbox"]:checked + label {
+    background: url(icons/check.png) #01d6b3 no-repeat center/10px 10px;
+    float: left;
+}
+
+/* span안에 내용 위치 이동*/
+.select {position: relative;}
+.select .all_select input[type="checkbox"] + label span {
+    position: absolute; 
+    top: 0; 
+    left: 25px; 
+    display: block; 
+    font-weight: bold;
+    font-family: NanumSquare;
+    font-size:12pt;
+}
+
+.comment_list{
+    margin: 10px;
+    text-align:left;
+    padding:10px;
+    line-height: 120%;
+    font-size: 12pt;
+    font-family: NanumSquareL;
+    line-height: 120%;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.2);
+
+
+}
+/* .coment_list ul {margin: 20px;} */
+.comment_list li { 
+    margin: 20px 0px; 
+    list-style: none;}
+.comment_list li::after {display: block; clear: both; content: "";}
+.comment_list ul li input[type="checkbox"] {display: none;}
+.comment_list ul li input[type="checkbox"] + label {
+  
+    width: 18px;
+    height: 18px;
+    background: #01d6b3;
+    cursor: pointer;
+    border-radius: 3px;
+    float: left;
+    
+}
+.comment_list ul li input[type="checkbox"]:checked + label {
+    background: url(icons/check.png) #01d6b3 no-repeat center/10px 10px;
+    float: left;
+}
+.comment_list ul li input[type="checkbox"] + label span {
+    position: absolute;
+    left: 45px;
+    right:20px;
+    display: block;
+}
