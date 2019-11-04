@@ -11,7 +11,7 @@ function saveData() {
     
     myform = myform.replace(/(?:\r\n|\r|\n)/g, '<br/>');    // 공백 처리.
 
-    sessionStorage.setItem(myform_title, myform);   // myform_title이 key값, myform이 value값.
+    localStorage.setItem(myform_title, myform);   // myform_title이 key값, myform이 value값.
 
     display();      // 잘 되는지 실험을 위해.
 
@@ -22,9 +22,9 @@ function saveData() {
 function display() {
     var bottombox = document.getElementById("bottombox");
     bottombox.innerHTML = "";       // bottombox를 빈 공간으로 만들기. 
-    for(var x = 0; x < sessionStorage.length; x++){     // sessionStorage에 저장돼 있는 갯수만큼 돌림.
-        var a = sessionStorage.key(x);          // a에 key값.
-        var b = sessionStorage.getItem(a);      // b에 key값에 대한 value값 넣기.
+    for(var x = 0; x < localStorage.length; x++){     // localStorage에 저장돼 있는 갯수만큼 돌림.
+        var a = localStorage.key(x);          // a에 key값.
+        var b = localStorage.getItem(a);      // b에 key값에 대한 value값 넣기.
         bottombox.innerHTML += a+" - "+b+"<br/>";      // innerhtml.
     }
 }
