@@ -1,10 +1,9 @@
 
 $(document).ready(function() {
  
-    // 템플릿 추가 버튼 
+    // 템플릿 추가 버튼 mouseover/mouseout시 event
     document.getElementById("write_new").onmouseover = function () {
-        this.src = "icons/plus_light_icon_64.png";
-        
+        this.src = "icons/plus_light_icon_64.png"; 
     };
     
     document.getElementById("write_new").onmouseout = function () {
@@ -12,23 +11,81 @@ $(document).ready(function() {
     };
 
 
+    
+
 })
 
-// 체크 박스 모두 체크(flag==0)/해제(flag==1)
-var flag_allchecked = 0;
+// checkbox 전체 선택 및 해제 
 $("#selectAll").click(function () {
     
-    if (flag_allchecked==0){
-        $("input[name=check]:checkbox").each(function () {
-            $(this).attr("checked", true);
-        });
-        flag_allchecked=1;
-
+    if ($("#selectAll").is(":checked")){
+        $(".chk").prop("checked",true);  
     }else{
-        $("input[name=check]:checkbox").each(function () {
-            $(this).attr("checked", false);
-        });
-        flag_allchecked=0;
+        $(".chk").prop("checked", false);
+    }
+});
+
+// checkbox 한 개 선택 해제시 전체선택 체크박스 해제 
+$(".chk").click(function () {
+    if ($("input[name='chk']:checked").length == $("input[name='chk']").length ){
+        $("#selectAll").prop("checked",true);
+    }
+    else{
+        $("#selectAll").prop("checked", false);
+    }
+});
+
+
+
+$("#btn_copy").hide();
+$("#btn_reEdit").hide();
+// 편집한 내용 보여주기
+$("#btn_complete").click(function(){
+    var written_str ="";
+    var line_id;
+    $("input[name='chk']:checked").each(function () {
+        line_id = $(this).attr("id");
+        written_str +=  $("input[id='text_" + line_id + "']").val() +'<br/>';
+    });
+   
+    $("#result").html(written_str);
+    $("#comment_list").hide();
+    $("#btn_complete").hide();
+    $("#btn_cancel").hide();
+    $("#btn_reEdit").show();
+    $("#btn_copy").show();
+  
+
+});
+
+//클립보드로 복사하기
+$('#btn_copy').click(function () {
+    var copytext = $('#result').html();
+    copytext = replaceAll(copytext, "<br>", "\n");
+    copyToClipboard(copytext);
+    alert("클립보드로 복사되었습니다.");
+
+});
+
+function replaceAll(str, searchStr, replaceStr) {
+    return str.split(searchStr).join(replaceStr);
+}
+
+function copyToClipboard(val){
+    var text = document.createElement("textarea");
+    document.body.appendChild(text);
+    text.value = val;
+    text.select();
+
+    try {
+        document.execCommand('copy');
+        
+    } catch (e) {
+        console.log("document.execCommand('copy'); 를 지원하지 않는 브라우저입니다.");
     }
     
-});
+    document.body.removeChild(text);
+}
+
+
+
