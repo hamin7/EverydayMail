@@ -109,7 +109,7 @@ a{
     font-family: NanumSquareL;
     box-shadow: 0 1px 4px 0 rgba(0,0,0,0.2);
 }
-input[type=text] {
+#myform_title {
     padding: 5px;
     box-sizing: border-box;
     border:none;
@@ -140,40 +140,9 @@ input[type=text] {
 }
 
 /* 아래는 다  체크박스 화면 */
-.select .all_select input[type="checkbox"] {display: none;}
 
-/* 체크 안된 상태에 배경 넣기 */
-.select .all_select input[type="checkbox"] + label {
-    /* display: inline-block; */
-    width: 18px;
-    height: 18px;
-    background: #01d6b3;
-    cursor: pointer;
-    border-radius: 3px;
-    float: left;
-}
-
-.select .all_select::after {display: block; clear:both; content:"";}
-
-/*체크된 상태에 배경 넣기*/
-.select .all_select input[type="checkbox"]:checked + label {
-    background: url(icons/check.png) #01d6b3 no-repeat center/10px 10px;
-    float: left;
-}
-
-/* span안에 내용 위치 이동*/
-.select {position: relative;}
-.select .all_select input[type="checkbox"] + label span {
-    position: absolute; 
-    top: 0; 
-    left: 25px; 
-    display: block; 
-    font-weight: bold;
-    font-family: NanumSquare;
-    font-size:12pt;
-}
-
-.comment_list{
+.edit_box {
+    position: relative;
     margin: 10px;
     text-align:left;
     padding:10px;
@@ -182,32 +151,58 @@ input[type=text] {
     font-family: NanumSquareL;
     line-height: 120%;
     box-shadow: 0 1px 4px 0 rgba(0,0,0,0.2);
-
+}
+.select_control{
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-family: NanumSquare;
 
 }
-/* .coment_list ul {margin: 20px;} */
-.comment_list li { 
-    margin: 20px 0px; 
-    list-style: none;}
-.comment_list li::after {display: block; clear: both; content: "";}
-.comment_list ul li input[type="checkbox"] {display: none;}
-.comment_list ul li input[type="checkbox"] + label {
+
+.edit_box input[type=text]{
+    width: 98%;
+    padding: 3px;
   
+    box-sizing: border-box;
+    border:none;
+    border-bottom: 1px solid #01D6B3;
+    font-size:11pt;
+    font-family: NanumSquareL;
+}
+
+.edit_box input[type=checkbox] {
+    
+    display: none;
+  
+}
+
+.edit_box input[type=checkbox] + label{
+    
+    cursor: pointer;
+    margin-left: 25px;
+
+}
+.edit_box label {
+  display: block;
+  margin: 10px 0px;
+}
+
+.edit_box input[type=checkbox] + label:before {
+    content: "";
     width: 18px;
     height: 18px;
-    background: #01d6b3;
-    cursor: pointer;
+    margin-right: 10px;
+    position: absolute;
+    left: 10px;
+    background-color: #01D6B3;
     border-radius: 3px;
-    float: left;
     
 }
-.comment_list ul li input[type="checkbox"]:checked + label {
+
+
+.edit_box input[type=checkbox]:checked + label:before{
+    content: "";
     background: url(icons/check.png) #01d6b3 no-repeat center/10px 10px;
-    float: left;
+    text-align: center;   
 }
-.comment_list ul li input[type="checkbox"] + label span {
-    position: absolute;
-    left: 45px;
-    right:20px;
-    display: block;
-}
+

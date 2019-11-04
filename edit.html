@@ -24,52 +24,45 @@
     <div class="content_description">템플릿을 편집하여 메일을 작성할 수 있습니다</div>
 
     <!-- 템플릿 목록 -->
-    <div id="comment_list" class="comment_list">
+    <div class="edit_box">
+        <div id="result"></div>
+        
         <!--전체 선택 부분-->
-        <div class="select">
-            <div class="all_select">
+        <div id="comment_list">
+            <div class="select_control">
                 <input type="checkbox" id="selectAll" name="전체선택" />
                 <label for="selectAll"><span>전체선택</span></label>
             </div>
-        </div>
-        <ul>
-            <li>
-                <input type="checkbox"  id="line1" name="check" />
-                <label for="line1"><span>교수님 안녕하세요.</span></label>
-            </li>
-            <li>
-                <input type="checkbox" id="line2" name="check" />
-                <label for="line2"><span>저는 웹 프로그래밍 과목을 수강중인 17학번 홍길동입니다.</span></label>
-            <li>
-                <input type="checkbox" id="line3" name="check" />
-                <label for="line3"><span>15일에 저희 학과의 필수 참석 행사로 부득이하게 수업에 참석하지 못할 것 같습니다.</span></label>
-            </li>
-            <li>
-                <input type="checkbox" id="line4" name="check" />
-                <label for="line4"><span>학과 사무실에서 발급해준 출석 확인증으로 출석인정이 가능할지 문의드립니다.</span></label>
-            </li>
-            <li>
-                <input type="checkbox" id="line5" name="check" />
-                <label for="line5"><span>확인해주시면 제출하도록 하겠습니다.</span></label>
-            </li>
-            <li>
-                <input type="checkbox" id="line6" name="check" />
-                <label for="line6"><span>좋은 하루 되시길 바랍니다.</span></label>
-            </li>
-            <li>
-                <input type="checkbox" id="line7" name="check" />
-                <label for="line7"><span>감사합니다.</span></label>
-            </li>
-            <li>
-                <input type="checkbox" id="line8" name="check" />
-                <label for="line8"><span>홍길동 드림.</span></label>
-            </li>
-        </ul>
-    </div>
-    <!--select-->
+            <hr>
+           
+            <input type="checkbox" id="line1" class="chk" name="chk" />
+            <label for="line1"><input type="text" id="text_line1" value="교수님 안녕하세요."></label>
+  
+             
+            <input type="checkbox" id="line2" class="chk" name="chk" />
+            <label for="line2"><input type="text" id="text_line2" value="저는 웹 프로그래밍 과목을 수강중인 17학번 홍길동입니다."></label>
 
-    <a href="index.html"><button class="button">취소</button></a>
-    <a href="#"><button class="button">완료</button></a>
+            
+            <input type="checkbox" id="line3"class="chk" name="chk" />
+            <label for="line3"><input type="text" id="text_line3" value="15일에 저희 학과의 필수 참석 행사로 부득이하게 수업에 참석하지 못할 것 같습니다."></label>
+
+            
+            <input type="checkbox" id="line4" class="chk" name="chk" />
+            <label for="line4"><input type="text" id="text_line4" value="학과 사무실에서 발급해준 출석 확인증으로 출석인정이 가능할지 문의드립니다."></label>
+
+            <input type="checkbox" id="line5" class="chk" name="chk" />
+            <label for="line5"><input type="text" id="text_line5" value="확인해주시면 제출하도록 하겠습니다."></label>
+        
+            <input type="checkbox" id="line6" class="chk" name="chk" />
+            <label for="line6"><input type="text" id="text_line6" value="감사합니다."></label>
+                
+        </div>
+    </div>
+
+    <a href="index.html"><button class="button" id="btn_cancel">취소</button></a>
+    <a href="#"><button class="button" id="btn_complete">완료</button></a>
+    <a href="edit.html"><button class="button" id="btn_reEdit">다시 편집</button></a>
+    <a href="#"><button class="button" id="btn_copy">클립보드로 복사</button></a>
 
     <script type='text/javascript' src='js/main.js'></script>
 </body>
