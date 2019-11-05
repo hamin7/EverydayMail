@@ -34,6 +34,7 @@ $(".chk").click(function () {
 
 
 $("#btn_copy").hide();
+$("#btn_save").hide();
 $("#btn_NaverMail").hide();
 // 편집한 내용 보여주기
 $("#btn_complete").click(function(){
@@ -51,6 +52,7 @@ $("#btn_complete").click(function(){
     $("#result").show();
     $("#result").html(written_str);
     $("#btn_NaverMail").show();
+    $("#btn_save").show();
     $("#btn_copy").show();
     $(".content_description").text("마지막으로 다듬어보세요!");
 
