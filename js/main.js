@@ -50,6 +50,7 @@ $("#btn_complete").click(function(){
     $("#btn_complete").hide();
     $("#btn_cancel").hide();
     $("#result").show();
+    $("#result").html(written_str);
     $("#btn_copy").show();
     $(".content_description").text("마지막으로 다듬어보세요!");
 
