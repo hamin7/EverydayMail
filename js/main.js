@@ -10,8 +10,7 @@ $(document).ready(function() {
         this.src = "icons/plus_icon_64.png";
     };
 
-
-    
+   
 
 })
 
@@ -36,27 +35,26 @@ $(".chk").click(function () {
 });
 
 
-
-$("#btn_copy").hide();
-$("#btn_reEdit").hide();
 // 편집한 내용 보여주기
+$("#btn_copy").hide();
 $("#btn_complete").click(function(){
-    var written_str ="";
+    var written_str = "";
     var line_id;
     $("input[name='chk']:checked").each(function () {
         line_id = $(this).attr("id");
-        written_str +=  $("input[id='text_" + line_id + "']").val() +'<br/>';
+        written_str +=  $("input[id='text_" + line_id + "']").val() +'\n';
     });
-   
-    $("#result").html(written_str);
-    $("#comment_list").hide();
+
+    
+    $("#edit_box").hide();
     $("#btn_complete").hide();
     $("#btn_cancel").hide();
-    $("#btn_reEdit").show();
+    $("#result").show();
     $("#btn_copy").show();
-  
+    $(".content_description").text("마지막으로 다듬어보세요!");
 
 });
+
 
 //클립보드로 복사하기
 $('#btn_copy').click(function () {
