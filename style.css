@@ -214,3 +214,7 @@ a{
     text-align: center;   
 }
 
+.myform-text {
+    font-family: 'Noto Sans KR', sans-serif;
+    text-decoration: none;
+}
