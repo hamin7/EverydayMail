@@ -61,30 +61,20 @@ $("#btn_complete").click(function(){
 
 //클립보드로 복사하기
 $('#btn_copy').click(function () {
-    var copytext = $('#result').html();
-    copytext = replaceAll(copytext, "<br>", "\n");
-    copyToClipboard(copytext);
-    alert("클립보드로 복사되었습니다.");
+
+    $('#result').select();
+    try {
+        document.execCommand('copy');
+        alert("클립보드로 복사되었습니다.");
+    } catch (e) {
+        alert("document.execCommand('copy');를 지원하지 않는 브라우저입니다.");
+    }
+    
 
 });
 
 function replaceAll(str, searchStr, replaceStr) {
     return str.split(searchStr).join(replaceStr);
-}
-
-function copyToClipboard(val){
-    var text = document.createElement("textarea");
-    document.body.appendChild(text);
-    text.value = val;
-    text.select();
-
-    try {
-        document.execCommand('copy');
-        
-    } catch (e) {
-        console.log("document.execCommand('copy');를 지원하지 않는 브라우저입니다.");
-    }
-    document.body.removeChild(text);
 }
 
 
