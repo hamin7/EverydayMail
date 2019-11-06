@@ -31,14 +31,13 @@ $(".chk").click(function () {
     }
 });
 
-
+var written_str = "";       // 전역변수로 선언.
 
 $("#btn_copy").hide();
 $("#btn_save").hide();
 $("#btn_NaverMail").hide();
 // 편집한 내용 보여주기
 $("#btn_complete").click(function(){
-    var written_str = "";
     var line_id;
     $("input[name='chk']:checked").each(function () {
         line_id = $(this).attr("id");
@@ -88,3 +87,9 @@ window.addEventListener(`drop`, (evt = event) => {
     evt.dataTransfer.effectAllowed = `none`;
     evt.dataTransfer.dropEffect = `none`;
 }, false);
+
+// 새로 저장 버튼으로 새로운 myform 만들기.
+$('#btn_save').click(function () {
+    location.href="write.html";
+    $("#myform").html(written_str);
+})
