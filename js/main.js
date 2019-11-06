@@ -45,14 +45,13 @@ $(".chk").click(function () {
     }
 });
 
-
+var written_str = "";       // 전역변수로 선언.
 
 $("#btn_copy").hide();
 $("#btn_save").hide();
 $("#btn_NaverMail").hide();
 // 편집한 내용 보여주기
 $("#btn_complete").click(function(){
-    var written_str = "";
     var line_id;
     $("input[name='chk']:checked").each(function () {
         line_id = $(this).attr("id");
