@@ -23,38 +23,38 @@ body{
     padding: 0;
     background-color: white;
     font-family: NanumSquare;
-    text-align: center; /* 추가 */
-
+    text-align: center; 
     
 }
 header{
     width:100%;
     /* justify-content: flex-end; */
-    display: flex;
+    /* display: flex; */
     position: relative;
     background-color: rgb(242, 242, 242);
+    text-align: left;
     
 }
 .logo{
     height: 45px;
-    margin-right: auto;
-    /* vertical-align: middle; */
-
-    
+    vertical-align: middle;
+    display: inline-block;   
 }
 .btnlist{
-/* line-height: 50px; */
+    float: right;
     padding: 0px 10px;
-    margin: 0px 10px;
+    margin-right: 20px;
+    vertical-align: middle;
 }
 .btnlist > button{
-    /* display: inline-block; */
-    width:6px;
-    height:6px;
+    display: inline-block;
+    width:4px;
+    height:4px;
     vertical-align: middle;
     border: none;
     background: none;
-    margin:0px 10px
+    margin: 0px 15px;
+  
 }
 
 .template_list{
