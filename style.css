@@ -127,6 +127,11 @@ header{
     -webkit-box-orient: vertical;
      
 }
+.btn_delete{
+    width:16px;
+    vertical-align: middle;
+    float:right;
+}
 
 a{
     text-decoration: none;

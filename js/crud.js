@@ -57,11 +57,12 @@ function initList(){
         const myformList = JSON.parse(localStorage["myformList"]);
         
         myformList.forEach(value => {
-            str += '<div class="row"> <a href="edit.html">';
+            str += '<a href="edit.html"> <div class="row"> ';
             str += '<h3 class="row_title">' + value.title +'</h3>';
-            str += '<p class="row_category">'+ value.category + '</p>';
+            str += '<span class="row_category">'+ value.category + '</span>';
+            str += '<img class="btn_delete" src="icons/remove_icon_32.png"/>';
             str += '<p class="row_content">' + value.contents +'</p>';
-            str += '</a> </div>';
+            str += '</div> </a> ';
             id++;
         })
         $('.content_description').text("템플릿을 눌러 메일을 작성해보세요");
