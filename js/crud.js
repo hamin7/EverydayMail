@@ -1,5 +1,5 @@
 $(function () {
-    $('.btn-add').click(function () {
+    $('#btn_insert').click(function () {
         insertData();
     });
 })
