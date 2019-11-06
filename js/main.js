@@ -49,8 +49,8 @@ $("#btn_complete").click(function(){
     $("#edit_box").hide();
     $("#btn_complete").hide();
     $("#btn_cancel").hide();
-    $("#result").show();
-    $("#result").html(written_str);
+    $("#result").show();    // result라는 id를 가진 textarea를 띄운다.
+    $("#result").html(written_str);     // result textarea에 written_str을 띄움.
     $("#btn_NaverMail").show();
     $("#btn_save").show();
     $("#btn_copy").show();
@@ -61,7 +61,6 @@ $("#btn_complete").click(function(){
 
 //클립보드로 복사하기
 $('#btn_copy').click(function () {
-
     $('#result').select();
     try {
         document.execCommand('copy');
@@ -69,9 +68,8 @@ $('#btn_copy').click(function () {
     } catch (e) {
         alert("document.execCommand('copy');를 지원하지 않는 브라우저입니다.");
     }
-    
-
 });
+
 
 function replaceAll(str, searchStr, replaceStr) {
     return str.split(searchStr).join(replaceStr);
