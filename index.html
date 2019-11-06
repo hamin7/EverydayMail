@@ -8,7 +8,6 @@
     
     <script src="js/jquery-3.4.1.min.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css"/>
-    
 
  
 </head>
@@ -17,14 +16,11 @@
     <header>
         <a href="index.html"><img class="logo" src="icons/logo.png" alt="logo"></a>
         <div class="btnlist">
-            <button id="btn_template"><img width="30" src="icons/list_icon_32.png" /></button>
-            
-            <div class="dropdown" style="float:right;">
+            <button id="btn_template"><img width="30" src="icons/list_icon_32.png" /></button>          
+            <div class="dropdown">
                 <button class="dropbtn"><img id="dropbtn_img"  src="icons/settings_icon_32.png" /></button>
                 <div class="dropdown-content">
-                    <a href="#">Link 1</a>
-                    <a href="#">Link 2</a>
-                    <a href="#">Link 3</a>
+                    <div  id="clearList">템플릿 목록 초기화</div>
                 </div>
             </div>
         </div>
@@ -32,7 +28,6 @@
 
     <div class="content_description">자주 사용하는 템플릿 목록을 만들 수 있습니다</div>
 
-    <!-- 템플릿 목록 -->
     <div class="template_list">     
     </div>
     
@@ -41,6 +36,4 @@
     <script src="js/crud.js"></script>
     <script src='js/main.js'></script>
 </body>
-
-
 </html>
