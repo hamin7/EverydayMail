@@ -9,7 +9,7 @@
 
     <script src="js/jquery-3.4.1.min.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css" />
-    <script src="js/crud.js"></script>      <!--스토리지 저장 위해 이하민이 추가했다.-->
+    
 
 
 </head>
@@ -25,21 +25,14 @@
 
     <div class="content_description">자주 사용하는 메일 양식을 등록할 수 있습니다</div>
 
-    
-    <form action="javascript:myFunction()" method="POST">
-        <textarea id="myform"></textarea>
-        <input type="text" size="35" id="myform_title" placeholder="템플릿 제목" required>
-        <!--질문: require는 있어야 등록된다는 뜻-->
-        <!--<input type="submit" value="등록">-->
-        <a href="index.html"><button class="button" id="btn_insert">등록</button></a>
-    </form>
-    
-    <section id="bottombox">
-        Nothing Yet Now!
-    </section>
+    <textarea id="myform"></textarea>
+    <input type="text" size="35" id="myform_title" placeholder="템플릿 제목" required>
+    <!--질문: require는 있어야 등록된다는 뜻-->
+
+    <a href="index.html"><button class="button" id="btn_insert">등록</button></a>
     
 
-
-    <script type='text/javascript' src='js/main.js'></script>
+    <script src="js/crud.js"></script> 
+    <script src='js/main.js'></script>
 </body>
 </html>
