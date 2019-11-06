@@ -11,6 +11,20 @@ $("#write_new").mouseout(function () {
     $(this).prop('src', 'icons/plus_icon_64.png');
 });
 
+$("#dropbtn_img").mouseover(function () {
+    $(this).prop('src', 'icons/settings_black_icon_32.png');
+});
+$("#dropbtn_img").mouseout(function () {
+    $(this).prop('src', 'icons/settings_icon_32.png');
+});
+$(".dropdown-content").mouseover(function () {
+    $('#dropbtn_img').prop('src', 'icons/settings_black_icon_32.png');
+});
+$(".dropdown-content").mouseout(function () {
+    $('#dropbtn_img').prop('src', 'icons/settings_icon_32.png');
+});
+
+
 // checkbox 전체 선택 및 해제 
 $("#selectAll").click(function () {
     
