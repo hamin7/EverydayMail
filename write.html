@@ -13,11 +13,16 @@
 </head>
 
 <body>
-    <!--로고 및 메뉴바 -->
     <header>
         <a href="index.html"><img class="logo" src="icons/logo.png" alt="logo"></a>
         <div class="btnlist">
-            <button><img src="icons/list_icon_32.png" /></button>
+            <button id="btn_template"><img width="30" src="icons/list_icon_32.png" /></button>
+            <div class="dropdown">
+                <button class="dropbtn"><img id="dropbtn_img" src="icons/settings_icon_32.png" /></button>
+                <div class="dropdown-content">
+                    <div id="clearList">템플릿 목록 초기화</div>
+                </div>
+            </div>
         </div>
     </header>
 

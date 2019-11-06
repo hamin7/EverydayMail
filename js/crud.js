@@ -45,7 +45,7 @@ function insertData() {
         var newItem = new myform(myformList.length, myform_category, myform_title, myform_contents);
         myformList.push(newItem);
         localStorage.setItem("myformList", JSON.stringify(myformList));
-        
+    
     }
 }
 function initList(){
@@ -77,6 +77,8 @@ function deleteAll(){
     if(deleteAll){
         localStorage.removeItem("myformList");
 
+        // history.replaceState({}, "main", "index.html");
         location.reload();
+
     }
 }
