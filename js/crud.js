@@ -6,6 +6,10 @@ $(function () {
         insertData();
     });
 
+    $('#clearList').click(function () {
+        deleteAll();
+    });
+    
     
 })
 
@@ -42,7 +46,6 @@ function insertData() {
         myformList.push(newItem);
         localStorage.setItem("myformList", JSON.stringify(myformList));
         
-
     }
 }
 function initList(){
@@ -61,10 +64,19 @@ function initList(){
             str += '</a> </div>';
             id++;
         })
+        $('.content_description').text("템플릿을 눌러 메일을 작성해보세요");
     }catch(e){
-        str += "목록이 비어있습니다. 새로 작성해보세요!";
+        
     }
-    
 
     $('.template_list').html(str);
+}
+
+function deleteAll(){
+    var deleteAll = confirm("작성한 모든 템플릿이 삭제됩니다.\n계속하시겠습니까?");
+    if(deleteAll){
+        localStorage.removeItem("myformList");
+
+        location.reload();
+    }
 }
