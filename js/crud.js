@@ -84,14 +84,15 @@ function initList(){
 function initCheckList(id) {
 
     var data_arr = JSON.parse(localStorage["myformList"]);
+    var contents = data_arr[id].contents;
 
-    var contents;
-    contents = data_arr[id].contents
-
+    var contentSplit = contents.split('<br/>');
     var str = "";
-    str += '<input type="checkbox" id="line1" class="chk" name="chk" checked="true"/> ';
-    str += '<label for="line1"><input type="text" id="text_line1" value="' + contents + '"></label>';
-
+    for (var i in contentSplit) {
+        str += '<input type="checkbox" id="line'+i +'"  class="chk" name="chk" checked="true"/> ';
+        str += '<label for="line' + i + '"><input type="text" id="text_line' + i + '" value="' + contentSplit[i] + '"></label>';
+    }
+    
     $('#check_list').html(str);
 }
 
