@@ -1,8 +1,6 @@
-// var template_id;
-// var template="";
+
 $(function () {
     initList();
-    // initEdit();
 
     $('#btn_insert').click(function () {
         insertData();
@@ -12,19 +10,11 @@ $(function () {
         deleteAll();
     });
     
-    $('.btn_delete').click(function () {
-        
+    $('.btn_delete').click(function () {    
         var id = $(this).parents("div").prop("id");
         deleteItem(id);
         
     });
-    // $('.row').click(function () {
-    //     template_id = $(this).prop("id");
-    //     template = $('#'+template_id).find('.row_content').html();
-
-    // });
-
-   
 
 
 })
@@ -75,9 +65,8 @@ function initList(){
         const myformList = JSON.parse(localStorage["myformList"]);
         
         myformList.forEach(value => {
-            str += '<div class="row" id="'+id+'" >';
-            str += '<img class="btn_delete" src="icons/remove_icon_32.png" /> ';
-            str += '<div onClick = "move(' + id +')" >';
+            str += '<div class="row" id="'+id+'" > <img class="btn_delete" src="icons/remove_icon_32.png" /> ';
+            str += '<div class="row_click" onClick = "move(' + id +')" >';
             str += '<h3 class="row_title">' + value.title +'</h3>';
             str += '<span class="row_category">'+ value.category + '</span>';
             str += '<p class="row_content">' + value.contents +'</p>';
@@ -92,22 +81,42 @@ function initList(){
     $('.template_list').html(str);
 }
 
+function initEdit(id) {
+
+    var data_arr = JSON.parse(localStorage["myformList"]);
+
+    var contents;
+    contents = data_arr[id].contents
+
+    var str = "";
+    str += '<input type="checkbox" id="line1" class="chk" name="chk" checked="true"/> ';
+    str += '<label for="line1"><input type="text" id="text_line1" value="' + contents + '"></label>';
+
+    $('#check_list').html(str);
+}
+
+
+
 
 function deleteItem(num) {
-    var data_arr = JSON.parse(localStorage["myformList"]);
-    data_arr.splice(num, 1);
+    var deleteItem = confirm("해당 템플릿이 삭제됩니다.\n계속하시겠습니까?");
+    if (deleteItem) {
+        var data_arr = JSON.parse(localStorage["myformList"]);
+        data_arr.splice(num, 1);
 
-    var id = 0;
-    data_arr.forEach(value => {
-        value.id = id;
-        id++;
-    });
+        var id = 0;
+        data_arr.forEach(value => {
+            value.id = id;
+            id++;
+        });
 
-    localStorage.setItem("myformList", JSON.stringify(data_arr));
-    // if (data_arr.length==0)
-    //어떡하냐!!!!!!!!!1
+        localStorage.setItem("myformList", JSON.stringify(data_arr));
+        // if (data_arr.length==0)
+        //어떡하냐!!!!!!!!!1
+
+        location.reload();
+    }
     
-    location.reload();
 }
 
 function deleteAll(){

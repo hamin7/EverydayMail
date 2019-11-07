@@ -47,18 +47,5 @@ function loadElement() {
     $("#myform").text("얌");     // write.html의 myform textarea에 written_str 데이터 출력.
 }
 
-function initEdit(id){
-    
-    var data_arr = JSON.parse(localStorage["myformList"]);
-    
-    var contents;
-    contents = data_arr[id].contents
-
-    var str ="";
-    str += '<input type="checkbox" id="line1" class="chk" name="chk" checked="true"/> ';
-    str += '<label for="line1"><input type="text" id="text_line1" value="' + contents + '"></label>';
-        
-    $('#check_list').html(str);
-}
 
 
