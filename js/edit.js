@@ -4,14 +4,14 @@ $(document).ready(function () {
         
         saveElement();
         //location.href="write.html";
-        location.replace("write.html");
+        location.replace("write.html");     // 페이지 이동.
         //location.reload();        // 새로고침
         
         loadElement();
         //$("#myform").html("애용");
         //$(document).ready(function() { alert("첫번째 ready()"); });
         //$(document).ready(function() {
-        $("#myform").html(written_str);     // write.html의 myform textarea에 written_str 데이터 출력.
+        
         //alert(written_str);
         //});
         //alert(written_str);
@@ -25,7 +25,9 @@ function saveElement() {
 }
 
 function loadElement() {
-    sessionStorage.getItem('myform')
+    var output;
+    output = sessionStorage.getItem('myform')
     alert("로드완료");
+    $("#myform").html(output);     // write.html의 myform textarea에 written_str 데이터 출력.
 }
 
