@@ -45,6 +45,8 @@ function insertData() {
         var newItem = new myform(myformList.length, myform_category, myform_title, myform_contents);
         myformList.push(newItem);
         localStorage.setItem("myformList", JSON.stringify(myformList));
+
+        location.replace("index.html");
     
     }
 }
@@ -65,9 +67,9 @@ function initList(){
             str += '</div> </a> ';
             id++;
         })
-        $('.content_description').text("템플릿을 눌러 메일을 작성해보세요");
+        // $('.content_description').text("");
     }catch(e){
-        
+        str += '<div class="row">목록이 비어있습니다<br/>버튼을 눌러 새로운 템플릿을 작성하세요</div>';
     }
 
     $('.template_list').html(str);
