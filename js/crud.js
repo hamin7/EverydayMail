@@ -10,6 +10,12 @@ $(function () {
         deleteAll();
     });
     
+    $('.btn_delete').click(function () {
+        var id = $(this).parents("div").prop("id");
+        deleteItem(id);
+        
+    });
+    
     
 })
 
@@ -59,12 +65,12 @@ function initList(){
         const myformList = JSON.parse(localStorage["myformList"]);
         
         myformList.forEach(value => {
-            str += '<a href="edit.html"> <div class="row"> ';
-            str += '<h3 class="row_title">' + value.title +'</h3>';
+            str += '<div class="row" id="' + id +'">';
+            str += '<img class="btn_delete" src="icons/remove_icon_32.png" /> ';
+            str += '<a href="edit.html"> <h3 class="row_title">' + value.title +'</h3>';
             str += '<span class="row_category">'+ value.category + '</span>';
-            str += '<img class="btn_delete" src="icons/remove_icon_32.png"/>';
             str += '<p class="row_content">' + value.contents +'</p>';
-            str += '</div> </a> ';
+            str += '</a></div>';
             id++;
         })
         // $('.content_description').text("");
@@ -75,12 +81,25 @@ function initList(){
     $('.template_list').html(str);
 }
 
+function deleteItem(value) {
+    var data_arr = JSON.parse(localStorage["myformList"]);
+    data_arr.splice(value, 1);
+
+    var id = 0;
+    data_arr.forEach(value => {
+        value.id = id;
+        id++;
+    });
+
+    localStorage.setItem("myformList", JSON.stringify(data_arr));
+    location.reload();
+}
+
 function deleteAll(){
     var deleteAll = confirm("작성한 모든 템플릿이 삭제됩니다.\n계속하시겠습니까?");
     if(deleteAll){
         localStorage.removeItem("myformList");
 
-        // history.replaceState({}, "main", "index.html");
         location.reload();
 
     }
