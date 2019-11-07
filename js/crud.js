@@ -81,7 +81,7 @@ function initList(){
     $('.template_list').html(str);
 }
 
-function initEdit(id) {
+function initCheckList(id) {
 
     var data_arr = JSON.parse(localStorage["myformList"]);
 

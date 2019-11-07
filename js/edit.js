@@ -1,10 +1,10 @@
-$(document).ready(function () {
+$(function () {
 
     var address = unescape(location.href);
     var params = getUrlParams();
     var id=params.template_id;
  
-    initEdit(id);
+    initCheckList(id);
     
 
    
