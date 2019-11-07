@@ -1,6 +1,8 @@
-
+// var template_id;
+// var template="";
 $(function () {
     initList();
+    // initEdit();
 
     $('#btn_insert').click(function () {
         insertData();
@@ -11,12 +13,20 @@ $(function () {
     });
     
     $('.btn_delete').click(function () {
+        
         var id = $(this).parents("div").prop("id");
         deleteItem(id);
         
     });
-    
-    
+    // $('.row').click(function () {
+    //     template_id = $(this).prop("id");
+    //     template = $('#'+template_id).find('.row_content').html();
+
+    // });
+
+   
+
+
 })
 
 
@@ -65,12 +75,13 @@ function initList(){
         const myformList = JSON.parse(localStorage["myformList"]);
         
         myformList.forEach(value => {
-            str += '<div class="row" id="' + id +'">';
+            str += '<div class="row" id="'+id+'" >';
             str += '<img class="btn_delete" src="icons/remove_icon_32.png" /> ';
-            str += '<a href="edit.html"> <h3 class="row_title">' + value.title +'</h3>';
+            str += '<div onClick = "move(' + id +')" >';
+            str += '<h3 class="row_title">' + value.title +'</h3>';
             str += '<span class="row_category">'+ value.category + '</span>';
             str += '<p class="row_content">' + value.contents +'</p>';
-            str += '</a></div>';
+            str += '</div> </div>';
             id++;
         })
         // $('.content_description').text("");
@@ -81,9 +92,10 @@ function initList(){
     $('.template_list').html(str);
 }
 
-function deleteItem(value) {
+
+function deleteItem(num) {
     var data_arr = JSON.parse(localStorage["myformList"]);
-    data_arr.splice(value, 1);
+    data_arr.splice(num, 1);
 
     var id = 0;
     data_arr.forEach(value => {
@@ -92,6 +104,9 @@ function deleteItem(value) {
     });
 
     localStorage.setItem("myformList", JSON.stringify(data_arr));
+    // if (data_arr.length==0)
+    //어떡하냐!!!!!!!!!1
+    
     location.reload();
 }
 
@@ -101,6 +116,5 @@ function deleteAll(){
         localStorage.removeItem("myformList");
 
         location.reload();
-
     }
 }

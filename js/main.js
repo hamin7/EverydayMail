@@ -65,6 +65,9 @@ $("#btn_complete").click(function(){
 
 });
 
+var move = function (num) {
+    location.href = "edit.html?template_id=" + num;
+};
 
 //클립보드로 복사하기
 $('#btn_copy').click(function () {
