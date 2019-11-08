@@ -95,9 +95,11 @@ function crawl() {
       const fragment = document.createElement('DIV');
       fragment.innerHTML = html;
   
-      const ths = fragment.querySelectorAll('.foodView-view table th');
-      ths.forEach((th) => {
+      const divs = fragment.querySelectorAll('.panel-group clearfix');
+      divs.forEach((div) => {
+        /*
         let value = '';
+        value = 
         const title = th.innerHTML;
         if (title.includes('운영시간')) {
           value = th.closest('tr').querySelector('td pre').innerHTML;
@@ -106,6 +108,7 @@ function crawl() {
           value = th.closest('tr').querySelector('td').innerHTML;
           dataToSave.body = value;
         }
+        */
       });
 
         whale.storage.local.set({
