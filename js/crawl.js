@@ -87,8 +87,8 @@ $(document).ready(function() {
 });
 */
 
-// Cafeteria
-function food() {
+// Crawling
+function crawl() {
     function parseResult(html) {
       const dataToSave = {};
   
@@ -101,13 +101,10 @@ function food() {
         const title = th.innerHTML;
         if (title.includes('운영시간')) {
           value = th.closest('tr').querySelector('td pre').innerHTML;
-          dataToSave.mealTime = value;
+          dataToSave.title = value;
         } else if (title.includes('식당명')) {
           value = th.closest('tr').querySelector('td').innerHTML;
-          dataToSave.name = value;
-        } else if (title.includes('위치')) {
-          value = th.closest('tr').querySelector('td').innerHTML;
-          dataToSave.location = value;
+          dataToSave.body = value;
         }
       });
 
@@ -118,30 +115,25 @@ function food() {
     }
   
     function fetchUrl() {
-      fetch(`http://www.hanyang.ac.kr/web/www/re1`)
+      fetch(`http://bizmail.yesform.com/list/list.php`)
         .then(result => result.text())
         .then(html => parseResult(html));
     }
   
     fetchUrl();
 }
+  
 
-function execution() {
-    let a = 0;
   
-    food();
-    setInterval(() => {
-      food();
-    }, 1000 * 60 * 60);
-}
-  
-//execution();
-  
-  $(document).ready(function() {
+$(document).ready(function() {
     $('#btn_ajax').click(function() {
-        
-        food();
-        
-        alert("됨");
+        crawl();
+        alert("크롤링 및 파싱 됨");
+    })
+});
+
+$(document).ready(function() {
+    $('#btn_shaw').click(function() {
+        alert("보여줄게오");
     })
 });
