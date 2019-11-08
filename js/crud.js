@@ -4,6 +4,7 @@ $(function () {
 
     $('#btn_insert').click(function () {
         insertData();
+        
     });
 
     $('#clearList').click(function () {
@@ -32,13 +33,14 @@ class myform {
 
 // local storage에 myform 객체를 넣는 함수.
 function insertData() {
+    
     var myform_title = $('#myform_title').val();
     var myform_category = "분류 없음";
     var myform_contents = $('#myform').val();
 
     myform_contents = myform_contents.replace(/(?:\r\n|\r|\n)/g, '<br/>');
 
-    if (myform_title ==  "")
+    if (myform_title == "" || myform_contents=="")
         alert('제목을 입력해주세요');
     else {
         var myformList;
@@ -74,9 +76,12 @@ function initList(){
             id++;
         })
         // $('.content_description').text("");
+        if (myformList.length == 0)
+            str += '<div class="row">목록이 비어있습니다<br/>버튼을 눌러 새로운 템플릿을 작성하세요</div>'; 
     }catch(e){
-        str += '<div class="row">목록이 비어있습니다<br/>버튼을 눌러 새로운 템플릿을 작성하세요</div>';
+        
     }
+    
 
     $('.template_list').html(str);
 }
