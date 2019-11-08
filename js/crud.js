@@ -67,15 +67,16 @@ function initList(){
         const myformList = JSON.parse(localStorage["myformList"]);
         
         myformList.forEach(value => {
+            var modified = replaceAll(value.contents,"<br/>", " ");
+            
             str += '<div class="row" id="'+id+'" > <img class="btn_delete" src="icons/remove_icon_32.png" /> ';
             str += '<div class="row_click" onClick = "move(' + id +')" >';
-            str += '<h3 class="row_title">' + value.title +'</h3>';
-            str += '<span class="row_category">'+ value.category + '</span>';
-            str += '<p class="row_content">' + value.contents +'</p>';
-            str += '</div> </div>';
+            str += '<span class="row_category">' + value.category + '</span>';
+            str += '<h4 class="row_title">' + value.title +'</h4>';
+            str += '<p class="row_content">' + modified +'</p></div></div>';
             id++;
         })
-        // $('.content_description').text("");
+        
         if (myformList.length == 0)
             str += '<div class="row">목록이 비어있습니다<br/>버튼을 눌러 새로운 템플릿을 작성하세요</div>'; 
     }catch(e){
@@ -85,6 +86,7 @@ function initList(){
 
     $('.template_list').html(str);
 }
+
 
 function initCheckList(id) {
 
