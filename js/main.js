@@ -1,7 +1,6 @@
 $(document).ready(function() {
     $("#btn_copy").hide();
-    $("#btn_save").hide();
-    $("#btn_NaverMail").hide();
+    $("#btn_reSave").hide();
 
     $("#write_new").mouseover(function () {
         $(this).prop('src', 'icons/plus_light_icon_64.png');
@@ -57,7 +56,7 @@ $(document).ready(function() {
         $("#result").show();    // result라는 id를 가진 textarea를 띄운다.
         $("#result").html(written_str);     // result textarea에 written_str을 띄움.
         $("#btn_NaverMail").show();
-        $("#btn_save").show();
+        $("#btn_reSave").show();
         $("#btn_copy").show();
         $(".content_description").text("마지막으로 다듬어보세요!");
 
