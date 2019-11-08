@@ -174,7 +174,39 @@ a{
     border:none;
     border-bottom: 2px solid #01D6B3;
     text-align: center;
+    vertical-align: middle;
     font-family: NanumSquareL;
+}
+
+
+#select_box {
+    display: inline-block;
+    vertical-align: middle;
+    /* margin: 10px 160px; */
+    width: 120px;
+    height: 30px;
+    background: url("icons/dropdown_arrow_icon_16.png") 100px center no-repeat; /* 화살표 이미지 */
+    border: 1px solid #01D6B3;
+    border-radius: 4px;
+    font-family: NanumSquareL;
+}
+#select_box label {
+    position: absolute;
+    font-size: 14px;
+    color:#01D6B3;
+    margin: 8px;
+    /* top: 10px;
+    left: 12px; */
+    letter-spacing: 1px;
+}
+#select_box select#category {
+    width: 100%;
+    height: 40px;
+    min-height: 40px;
+    line-height: 40px;
+    padding: 0 10px;
+    opacity: 0;
+    filter: alpha(opacity=0); /* IE 8 */
 }
   
 .button{
