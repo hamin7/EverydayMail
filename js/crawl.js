@@ -125,23 +125,24 @@ function food() {
   
     fetchUrl();
 }
+  
+whale.runtime.sendMessage('food', () => {});
 
-function execution() {
-    let a = 0;
+(function init() {
+    whale.storage.local.get((result) => {
+        
+    })
+});
   
-    food();
-    setInterval(() => {
-      food();
-    }, 1000 * 60 * 60);
-}
-  
-//execution();
-  
-  $(document).ready(function() {
+$(document).ready(function() {
     $('#btn_ajax').click(function() {
-        
         food();
-        
-        alert("됨");
+        alert("크롤링 및 파싱 됨");
+    })
+});
+
+$(document).ready(function() {
+    $('#btn_shaw').click(function() {
+        alert("보여줄게오");
     })
 });
