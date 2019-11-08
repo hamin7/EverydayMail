@@ -26,7 +26,8 @@ function download_post() {      //
 
 $(document).ready(function() {
 	$('#btn_get').click(function() {
-		download_get();
+        download_get();
+        
 	});
 });
 
@@ -38,6 +39,7 @@ $(document).ready(function() {
 });
 */
 
+/*
 function download() {        
     var str_url = $('#input_url').val();
     $.ajax( {
@@ -53,6 +55,7 @@ $(document).ready(function() {
         download();
     })
 });
+*/
 
 /*
 $(document).ready(function() {
@@ -70,6 +73,7 @@ $(document).ready(function() {
 //var url = "http://bizmail.yesform.com/list/list.php?div=A12B22";
 //var url = "https://king10tech.github.io"
 
+/*
 var params = "uid=11"
 
 $(document).ready(function() {
@@ -79,5 +83,65 @@ $(document).ready(function() {
             }).done(function(data) {
                 $('#textvw').val(data);
             })
+    })
+});
+*/
+
+// Cafeteria
+function food() {
+    function parseResult(html) {
+      const dataToSave = {};
+  
+      const fragment = document.createElement('DIV');
+      fragment.innerHTML = html;
+  
+      const ths = fragment.querySelectorAll('.foodView-view table th');
+      ths.forEach((th) => {
+        let value = '';
+        const title = th.innerHTML;
+        if (title.includes('운영시간')) {
+          value = th.closest('tr').querySelector('td pre').innerHTML;
+          dataToSave.mealTime = value;
+        } else if (title.includes('식당명')) {
+          value = th.closest('tr').querySelector('td').innerHTML;
+          dataToSave.name = value;
+        } else if (title.includes('위치')) {
+          value = th.closest('tr').querySelector('td').innerHTML;
+          dataToSave.location = value;
+        }
+      });
+
+        whale.storage.local.set({
+        data: dataToSave,
+      });
+      
+    }
+  
+    function fetchUrl() {
+      fetch(`http://www.hanyang.ac.kr/web/www/re1`)
+        .then(result => result.text())
+        .then(html => parseResult(html));
+    }
+  
+    fetchUrl();
+}
+
+function execution() {
+    let a = 0;
+  
+    food();
+    setInterval(() => {
+      food();
+    }, 1000 * 60 * 60);
+}
+  
+//execution();
+  
+  $(document).ready(function() {
+    $('#btn_ajax').click(function() {
+        
+        food();
+        
+        alert("됨");
     })
 });
