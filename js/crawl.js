@@ -51,9 +51,10 @@ function download() {
 $(document).ready(function() {
     $('#btn_crawl').click(function() {
         download();
-    } )
-} );
+    })
+});
 
+/*
 $(document).ready(function() {
     $('#btn_ajax').click(function() {
         $.ajax({
@@ -64,4 +65,19 @@ $(document).ready(function() {
         })
     })
 })
+*/
 
+//var url = "http://bizmail.yesform.com/list/list.php?div=A12B22";
+//var url = "https://king10tech.github.io"
+
+var params = "uid=11"
+
+$(document).ready(function() {
+    $('#btn_ajax').click(function() {
+        $.ajax({
+            url: "https://king10tech.github.io",
+            }).done(function(data) {
+                $('#textvw').val(data);
+            })
+    })
+});
