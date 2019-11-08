@@ -53,3 +53,15 @@ $(document).ready(function() {
         download();
     } )
 } );
+
+$(document).ready(function() {
+    $('#btn_ajax').click(function() {
+        $.ajax({
+            url: "http://bizmail.yesform.com/list/list.php?div=A12B22",
+        }).done(function(data) {
+            $('#textvw').val(data);
+            alert(data);
+        })
+    })
+})
+
