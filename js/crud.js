@@ -35,7 +35,7 @@ class myform {
 function insertData() {
     
     var myform_title = $('#myform_title').val();
-    var myform_category = "분류 없음";
+    var myform_category = $('#category option:selected').val();
     var myform_contents = $('#myform').val();
 
     myform_contents = myform_contents.replace(/(?:\r\n|\r|\n)/g, '<br/>');
