@@ -28,12 +28,20 @@
 
     <div class="content_description">자주 사용하는 메일 양식을 등록할 수 있습니다</div>
 
-    <textarea id="myform"></textarea>
+    <textarea id="myform"></textarea><br/>
+    
+    <div id="select_box">
+        <label for="category">카테고리</label>
+        <select id="category">
+            <option value="분류 없음" selected="selected">분류 없음</option>
+            <option value="개인">개인</option>
+            <option value="업무">업무</option>
+        </select>
+    </div>
     <input type="text" size="35" id="myform_title" placeholder="템플릿 제목" required>
-    <!--질문: require는 있어야 등록된다는 뜻-->
-
     <button class="button" id="btn_insert">등록</button>
-        
+    <br/>
+
     <input id='input_url' value='https://king10tech.github.io'>
     <button class="button" id="btn_crawl">download ajax</button><br><br>
     <button class="button" id="btn_get">download get</button><br><br>
