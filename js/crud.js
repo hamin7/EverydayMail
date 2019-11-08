@@ -1,6 +1,7 @@
 
 $(function () {
     initList();
+    initCategory();
 
     $('#btn_insert').click(function () {
         insertData();
@@ -15,6 +16,17 @@ $(function () {
         var id = $(this).parents("div").prop("id");
         deleteItem(id);
         
+    });
+
+    $('#btn_newCategory').click(function () {
+        var newCategory = prompt("추가할 카테고리를 입력하세요");
+        if (newCategory != null){
+            if (newCategory == "")
+                alert('내용을 입력해주세요');
+            else
+                insertCategory(newCategory);
+        }
+       
     });
 
 
@@ -61,7 +73,6 @@ function insertData() {
 function initList(){
 
     var str ="";
-
     try{
         var id = 0;
         const myformList = JSON.parse(localStorage["myformList"]);
@@ -134,4 +145,34 @@ function deleteAll(){
 
         location.reload();
     }
+}
+
+function insertCategory(category) {
+    
+    try {
+        categoryList = JSON.parse(localStorage["categoryList"]);
+    } catch (e) {
+        categoryList = new Array();
+    }
+    categoryList.push(category);
+    localStorage.setItem("categoryList", JSON.stringify(categoryList));
+
+    //추가하고 새로고침해야 사용 가능
+
+}
+
+function initCategory(id) {
+
+    var str = "";
+    try {
+        const categoryList = JSON.parse(localStorage["categoryList"]);
+
+        for(var i=0 ;i<categoryList.length;i++){
+            str += '<option value="' + categoryList[i] + '">' + categoryList[i]+'</option>';
+        }      
+
+    } catch (e) {
+        
+    }
+    $('#category').append(str);
 }
