@@ -7,16 +7,8 @@ $(document).ready(function() {
         $(this).prop('src', 'icons/plus_icon_64.png');
     });
 
-    // $("#btn_template").mouseover(function () {
-    //     $('#dropbtn_img_template').prop('src', 'icons/settings_black_icon_32.png');
-    // });
-    // $("#btn_template").mouseout(function () {
-    //     $('#dropbtn_img_template').prop('src', 'icons/list_icon_32.png');
-    // });
-
     $('#btn_template').mouseover(function(){
-        //$('#dropbtn_img_template').text('마우스 포인터가 노란색원 안에 있습니다.');
-        $('#dropbtn_img_template').prop('src', 'icons/settings_black_icon_32.png');
+        $('#dropbtn_img_template').prop('src', 'icons/list_black_icon_32.png');
         var tip = $(this).attr('title');
 
         $(this).attr('title','');   // 브라우저에서 제공하는 기본 툴 팁을 끔.

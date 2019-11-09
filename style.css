@@ -296,3 +296,15 @@ a{
     font-family: 'Noto Sans KR', sans-serif;
     text-decoration: none;
 }
+
+# tooltip {
+    position: absolute;
+    z-index: 999;
+    color: white;
+    font-size: 15px;
+}
+
+# tooltip .tipBody {
+    background-color: black;
+    padding: 8px;
+}
