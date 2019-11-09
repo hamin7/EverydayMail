@@ -1,31 +1,65 @@
 $(function () {
-
-    var address = unescape(location.href);
-    var params = getUrlParams();
-    var id=params.template_id;
- 
-    initCheckList(id);
-    
-
    
-    // 새로 저장 버튼으로 새로운 myform 만들기.
-    // $('#btn_save').click(function () {
-        
-    //     // saveElement();
-    //     //location.href="write.html";
-    //     // location.replace("write.html");     // 페이지 이동.
 
-    //     //location.reload();        // 새로고침
-        
-    //     // loadElement();
-        
-    //     //$("#myform").html("애용");
-    //     //$(document).ready(function() { alert("첫번째 ready()"); });
-    //     //$(document).ready(function() {
-        
-    //     //alert(written_str);
-    //     //});
-    // });
+    var params = getUrlParams();
+    var id= params.template_id;
+ 
+    initCheckList("myformList",id);
+
+    $("#selectAll").click(function () {
+
+        if ($("#selectAll").is(":checked")) {
+            $(".chk").prop("checked", true);
+        } else {
+            $(".chk").prop("checked", false);
+        }
+    });
+
+
+    $(".chk").click(function () {
+        if ($("input[name='chk']:checked").length == $("input[name='chk']").length) {
+            $("#selectAll").prop("checked", true);
+        }
+        else {
+            $("#selectAll").prop("checked", false);
+        }
+    });
+
+    $("#btn_copy").hide();
+    $("#btn_reSave").hide();
+
+    // 편집한 내용 보여주기
+    $("#btn_complete").click(function () {
+        var written_str = "";
+        $("input[name='chk']:checked").each(function () {
+            var line_id = $(this).attr("id");
+            written_str += $("input[id='text_" + line_id + "']").val() + '\n';
+        });
+
+        $("#edit_box").hide();
+        $("#btn_complete").hide();
+        $("#btn_cancel").hide();
+        $("#result").show();
+        $("#result").html(written_str);
+        $("#btn_reSave").show();
+        $("#btn_copy").show();
+        $(".content_description").text("마지막으로 다듬어보세요!");
+
+    });
+
+
+    //클립보드로 복사하기
+    $('#btn_copy').click(function () {
+        $('#result').select();
+        try {
+            document.execCommand('copy');
+            alert("클립보드로 복사되었습니다.");
+        } catch (e) {
+            alert("document.execCommand('copy');를 지원하지 않는 브라우저입니다.");
+        }
+    });
+
+    
     
 });
 
@@ -34,18 +68,5 @@ function getUrlParams() {
     window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (str, key, value) { params[key] = value; });
     return params;
 }
-
-function saveElement() {
-    sessionStorage.setItem('myform', written_str)
-    // alert("저장완료");
-}
-
-function loadElement() {
-    var output;
-    output = sessionStorage.getItem('myform')
-    // alert("로드완료");
-    $("#myform").text("얌");     // write.html의 myform textarea에 written_str 데이터 출력.
-}
-
 
 
