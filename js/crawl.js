@@ -1,3 +1,21 @@
+
+$(document).ready(function () {
+
+    $('#btn_ajax').click(function () {
+        alert("크롤링 및 파싱 됨");
+        crawl();
+
+    });
+    $('#btn_show').click(function () {
+        alert("보여줄게오");
+    });
+    $('#btn_get').click(function () {
+        download_get();
+
+    });
+});
+
+
 /*
 $(document).ready(function() { 
     $('#btn_crawl').click(function() {  //#btn_crawl이란 아이디 클릭시 
@@ -24,12 +42,6 @@ function download_post() {      //
 }
 */
 
-$(document).ready(function() {
-	$('#btn_get').click(function() {
-        download_get();
-        
-	});
-});
 
 /*
 $(document).ready(function() {
@@ -90,63 +102,55 @@ $(document).ready(function() {
 // Crawling
 function crawl() {
 
-    alert('1')
+   
     function parseResult(html) {
-      const dataToSave = {};
+        alert(1);
+    //   const dataToSave = {};
 
       
   
-      const fragment = document.createElement('DIV');
-      fragment.innerHTML = html;
+    //   const fragment = document.createElement('DIV');
+    //   fragment.innerHTML = html;
 
       
-
-      const divs = fragment.querySelectorAll('.panel clearfix');
-      divs.forEach((div) => {
         
+    //   const divs = fragment.querySelectorAll('.panel clearfix');
+        
+    //   divs.forEach((div) => {
+    
+          
+    //     let value = '';
+    //     // const title = h4.innerHTML;
+    //     value = div.closest('h4').innerHTML;
+        
+    //     // dataToSave.title = value;
 
-
-        let value = '';
-        // const title = h4.innerHTML;
-        value = div.closest('h4').innerHTML;
-        dataToSave.title = value;
-
-        let value = '';
-        value = div.closest('.panel-body').innerHTML;
-        dataToSave.body = value;
+    //     // let value = '';
+    //     // value = div.closest('.panel-body').innerHTML;
+    //     // dataToSave.body = value;
         
         
         
-      });
+    //   });
 
-        whale.storage.local.set({
-        data: dataToSave,
-      });
+    //     whale.storage.local.set({
+    //     data: dataToSave,
+    //   });
       
     }
   
     function fetchUrl() {
-        alert('1');
-      fetch(`http://bizmail.yesform.com/list/list.php`)
+    
+        fetch(`http://bizmail.yesform.com/list/list.php`, headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        })
         .then(result => result.text())
         .then(html => parseResult(html));
+
+        
     }
   
     fetchUrl();
 }
   
 
-  
-$(document).ready(function() {
-    $('#btn_ajax').click(function() {
-        alert("크롤링 및 파싱 됨");
-        //crawl();
-        
-    })
-});
-
-$(document).ready(function() {
-    $('#btn_show').click(function() {
-        alert("보여줄게오");
-    })
-});
