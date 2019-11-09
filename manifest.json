@@ -9,10 +9,7 @@
         "tabs",
         "contextMenus",
         "notifications",
-        "http://bizmail.yesform.com/",
-        "*://bizmail.yesform.com/*",
-        "storage",
-        "*://*.hanyang.ac.kr/*"
+        "storage"
     ],
     "icons": {
         "32": "icons/list_icon_32.png"
