@@ -26,9 +26,13 @@ $(function () {
                 $("#picker").append('<option value="' + newCategory + '">' + newCategory + '</option>');
 
                 insertCategory(newCategory);
-                alert("'" + newCategory + "' 추가되었습니다");
+                alert("'" + newCategory + "' 카테고리가 추가되었습니다");
             }    
         }
+    });
+    $('#btn_delCategory').click(function () {
+        var select_name = $("select#picker").children("option:selected").text();
+        deleteCategory(select_name);
     });
     
 
@@ -95,6 +99,7 @@ function initList(list){
 
     var str ="";
     try{
+        
         var id = 0;
         var myformList = JSON.parse(localStorage[list]);
         
@@ -104,11 +109,10 @@ function initList(list){
             
             str += '<div class="row" id="'+id+'" > <img class="btn_delete" src="icons/remove_icon_32.png" /> ';
             str += '<div class="row_click" onClick = "move(0,'+ id + ')" >';
-            // str += '<div class="row_click" onClick = "move('+list+  ',' + id +')" >';
             str += '<span class="row_category">' + value.category + '</span>';
             str += '<h4 class="row_title">' + value.title +'</h4>';
             str += '<p class="row_content">' + modified +'</p></div></div>';
-            id++;
+            id--;
         })
         
         if (myformList.length == 0)
@@ -224,3 +228,40 @@ function initCategory() {
     $('#picker').append(str);
 }
 
+function deleteCategory(name){
+    if(name=="전체" || name=="분류 없음")
+        alert("기본 카테고리는 삭제할 수 없습니다");
+    else{
+        var deleteCategory = confirm("'" + name + "' 카테고리가 삭제됩니다.\n계속하시겠습니까?");
+        try {
+            var template_arr = JSON.parse(localStorage["myformList"]);
+            for (var i = 0; i < template_arr.length; i++) {
+                if (template_arr[i].category == name) {
+                    alert("해당 카테고리에 템플릿이 존재하여 삭제할 수 없습니다");
+                    deleteCategory = false;
+                    break;
+                }
+            }
+        } catch (e) {
+
+        }    
+        
+        if (deleteCategory) {
+            try {
+                var data_arr = JSON.parse(localStorage["categoryList"]);
+
+                for (var i = 0; i < data_arr.length; i++) {
+                    if (data_arr[i] == name) {
+                        data_arr.splice(i, 1);
+                    }
+                }
+
+                localStorage.setItem("categoryList", JSON.stringify(data_arr));
+                location.reload();
+            } catch (e) {
+            }
+        }
+    } 
+    
+    
+}
