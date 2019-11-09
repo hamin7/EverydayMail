@@ -12,9 +12,7 @@
 *{
     margin:0;
     padding:0;
-    /* box-sizing: border-box; */
 }
-
 
 body{
     position: relative;
@@ -139,8 +137,6 @@ header{
     width:16px;
     vertical-align: middle;
     float:right;
-
-    /* position: fixed; */
     cursor:pointer;
 }
 
@@ -203,7 +199,6 @@ a{
     line-height: 40px;
     padding: 0 10px;
     opacity: 0;
-    filter: alpha(opacity=0); /* IE 8 */
 }
   
 .button{
@@ -225,9 +220,7 @@ a{
     font-family: NanumSquareL;
     font-size: 10pt;
     margin: 10px;
-
 }
-
 
 #edit_box {
     position: relative;
@@ -257,13 +250,10 @@ a{
 }
 
 #edit_box input[type=checkbox] {
-    
     display: none;
-  
 }
 
 #edit_box input[type=checkbox] + label{
-    
     cursor: pointer;
     margin-left: 25px;
 
