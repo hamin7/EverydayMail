@@ -32,7 +32,13 @@ $(function () {
     $("#btn_copy").hide();
     $("#btn_reSave").hide();
 
+    
+    $("#btn_cancel").click(function () {
+        location.href="index.html";
+    });
+
     // 편집한 내용 보여주기
+    
     $("#btn_complete").click(function () {
         var written_str = "";
         $("input[name='chk']:checked").each(function () {
@@ -62,7 +68,9 @@ $(function () {
             alert("document.execCommand('copy');를 지원하지 않는 브라우저입니다.");
         }
     });
-
+    
+    $('#btn_reSave').click(function () {
+    });
     
     
 });
