@@ -1,6 +1,5 @@
 $(function () {
    
-
     var params = getUrlParams();
     var id= params.template_id;
     var list_flag = params.list;
@@ -31,14 +30,16 @@ $(function () {
 
     $("#btn_copy").hide();
     $("#btn_reSave").hide();
+    $("#select_category").hide();
+    $("#btn_newCategory").hide();
+    $("#myform_title").hide();
+    $("#btn_insert").hide();
 
-    
+      
     $("#btn_cancel").click(function () {
         location.href="index.html";
     });
 
-    // 편집한 내용 보여주기
-    
     $("#btn_complete").click(function () {
         var written_str = "";
         $("input[name='chk']:checked").each(function () {
@@ -58,7 +59,6 @@ $(function () {
     });
 
 
-    //클립보드로 복사하기
     $('#btn_copy').click(function () {
         $('#result').select();
         try {
@@ -70,6 +70,11 @@ $(function () {
     });
     
     $('#btn_reSave').click(function () {
+        $(this).hide();
+        $("#select_category").show();
+        $("#btn_newCategory").show();
+        $("#myform_title").show();
+        $("#btn_insert").show();
     });
     
     
