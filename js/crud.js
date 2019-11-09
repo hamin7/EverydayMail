@@ -12,11 +12,13 @@ $(function () {
         deleteAll();
     });
     
-    $('.btn_delete').click(function () {    
+    $('.btn_delete').click(function () {
         var id = $(this).parents("div").prop("id");
+        
         deleteItem(id);
         
     });
+    
 
     $('#btn_newCategory').click(function () {
         var newCategory = prompt("추가할 카테고리를 입력하세요");
@@ -30,6 +32,24 @@ $(function () {
             }    
         }
     });
+    
+
+    $("select#picker").change(function () {
+        var select_name = $(this).children("option:selected").text();
+        $(this).siblings("label").text(select_name);
+
+        if(select_name=="전체") 
+            initList();
+        else
+            initSelectedList(select_name);
+
+        $('.btn_delete').click(function () {
+            var id = $(this).parents("div").prop("id");
+            deleteItem(id);
+        });
+
+    });
+
     $('#clearCategory').click(function () {
         localStorage.removeItem("categoryList");
     });
@@ -84,7 +104,7 @@ function initList(){
     var str ="";
     try{
         var id = 0;
-        const myformList = JSON.parse(localStorage["myformList"]);
+        var myformList = JSON.parse(localStorage["myformList"]);
         
         myformList.forEach(value => {
             var modified = replaceAll(value.contents,"<br/>", " ");
@@ -111,21 +131,22 @@ function initSelectedList(category){
     var str = "";
     try {
         var id = 0;
-        const myformList = JSON.parse(localStorage["myformList"]);
+        var myformList = JSON.parse(localStorage["myformList"]);
 
         myformList.forEach(value => {
             if(value.category == category){
                 var modified = replaceAll(value.contents, "<br/>", " ");
 
-                str += '<div class="row" id="' + id + '" > <img class="btn_delete" src="icons/remove_icon_32.png" /> ';
+                str += '<div class="row" id="' + id + '" > <img class="btn_delete" src="icons/remove_icon_32.png" />';
                 str += '<div class="row_click" onClick = "move(' + id + ')" >';
                 str += '<span class="row_category">' + value.category + '</span>';
                 str += '<h4 class="row_title">' + value.title + '</h4>';
                 str += '<p class="row_content">' + modified + '</p></div></div>';
-                id++;
+                
             }
-            
+            id++;
         })
+        
     } catch (e) {
 
     }
@@ -152,6 +173,7 @@ function initCheckList(id) {
 
 
 function deleteItem(num) {
+
     var deleteItem = confirm("해당 템플릿이 삭제됩니다.\n계속하시겠습니까?");
     if (deleteItem) {
         var data_arr = JSON.parse(localStorage["myformList"]);
