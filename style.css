@@ -301,10 +301,11 @@ a{
     position: absolute;
     z-index: 999;
     color: white;
-    font-size: 15px;
+    font-size: 5px;
 }
 
 #tooltip .tipBody {
     background-color: black;
+    opacity: 0.5;
     padding: 8px;
 }
