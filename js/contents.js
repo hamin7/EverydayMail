@@ -6,28 +6,31 @@ $(function () {
     });
 });
 function initTemplateList(){
-    var str = "";
-    try {
-        var id = 0;
-        const templateList = JSON.parse(localStorage["templateList"]);
-
-        templateList.forEach(value => {
-            var modified = replaceAll(value.contents, "<br/>", " ");
-
-            str += '<div class="row" id="' + id + '" >  ';
-            str += '<div class="row_click" onClick = "move(' + id + ')" >';
-            str += '<span class="row_category">' + value.category + '</span>';
-            str += '<h4 class="row_title">' + value.title + '</h4>';
-            str += '<p class="row_content">' + modified + '</p></div></div>';
-            id++;
-        })
-
-      
+    
+    var templateList;
+    try { 
+        templateList = JSON.parse(localStorage["templateList"]);
+    
     } catch (e) {
-        
         insertTemplate();
+        templateList = JSON.parse(localStorage["templateList"]);
     }
+
+    var id = 0;
+    var str = "";
+    templateList.forEach(value => {
+        var modified = replaceAll(value.contents, "<br/>", " ");
+
+        str += '<div class="row" id="' + id + '" >  ';
+        str += '<div class="row_click" onClick = "move(' + id + ')" >';
+        str += '<span class="row_category">' + value.category + '</span>';
+        str += '<h4 class="row_title">' + value.title + '</h4>';
+        str += '<p class="row_content">' + modified + '</p></div></div>';
+        id++;
+    })
+
     $('.template_list').html(str);
+   
 }
 function insertTemplate() {
 
@@ -40,6 +43,5 @@ function insertTemplate() {
 
     localStorage.setItem("templateList", JSON.stringify(templateList));
 
-    location.replace("index.html");
-    
+     
 }
