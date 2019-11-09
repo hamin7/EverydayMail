@@ -112,7 +112,7 @@ function initList(list){
             str += '<span class="row_category">' + value.category + '</span>';
             str += '<h4 class="row_title">' + value.title +'</h4>';
             str += '<p class="row_content">' + modified +'</p></div></div>';
-            id--;
+            id++;
         })
         
         if (myformList.length == 0)
