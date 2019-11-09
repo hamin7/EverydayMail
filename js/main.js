@@ -7,10 +7,40 @@ $(document).ready(function() {
         $(this).prop('src', 'icons/plus_icon_64.png');
     });
 
-    $(".dropdown").mouseover(function () {
+    // $("#btn_template").mouseover(function () {
+    //     $('#dropbtn_img_template').prop('src', 'icons/settings_black_icon_32.png');
+    // });
+    // $("#btn_template").mouseout(function () {
+    //     $('#dropbtn_img_template').prop('src', 'icons/list_icon_32.png');
+    // });
+
+    $('#btn_template').mouseover(function(){
+        //$('#dropbtn_img_template').text('마우스 포인터가 노란색원 안에 있습니다.');
+        $('#dropbtn_img_template').prop('src', 'icons/settings_black_icon_32.png');
+        var tip = $(this).attr('title');
+
+        $(this).attr('title','');   // 브라우저에서 제공하는 기본 툴 팁을 끔.
+        $(this).append('<div id="tooltip"><div class="tipBody">' + tip + '</div></div>');    // css와 연동하기 위해 html 태그 추가.
+    }).mousemove(function(e)
+    {
+        // 마우스가 움직일 때 툴 팁이 따라 다니도록 위치값 업데이트.
+        $('#tooltip').css('top', e.pageY + 10);
+        $('#tooltip').css('left', e.pageX + 10);
+    }).mouseout(function()
+    {
+        // 위에서 껐던 브라우저에서 제공하는 기본 툴 팁 복원.
+        $(this).attr('title', $('.tipBody').html());
+        $(this).children('div#tooltip').remove();
+    });
+
+    $('#btn_template').mouseout(function(){
+      $('#dropbtn_img_template').prop('src', 'icons/list_icon_32.png');
+    });
+
+    $("#dropbtn_img").mouseover(function () {
         $('#dropbtn_img').prop('src', 'icons/settings_black_icon_32.png');
     });
-    $(".dropdown").mouseout(function () {
+    $("#dropbtn_img").mouseout(function () {
         $('#dropbtn_img').prop('src', 'icons/settings_icon_32.png');
     });
 
