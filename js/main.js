@@ -75,10 +75,15 @@ $(document).ready(function() {
         }
     });
 
-    $("select#category").change(function () {
+    $("select").change(function () {
         var select_name = $(this).children("option:selected").text();
         $(this).siblings("label").text(select_name);
+        
+        if($(this).attr("id")=="picker")
+            initSelectedList(select_name);
+
     });
+   
 });
 
 

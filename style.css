@@ -179,10 +179,9 @@ a{
 }
 
 
-#select_box {
+.select_box {
     display: inline-block;
     vertical-align: middle;
-    /* margin: 10px 160px; */
     width: 120px;
     height: 30px;
     background: url("icons/dropdown_arrow_icon_16.png") 100px center no-repeat; /* 화살표 이미지 */
@@ -190,16 +189,14 @@ a{
     border-radius: 4px;
     font-family: NanumSquareL;
 }
-#select_box label {
+.select_box label {
     position: absolute;
     font-size: 14px;
     color:#01D6B3;
     margin: 8px;
-    /* top: 10px;
-    left: 12px; */
     letter-spacing: 1px;
 }
-#select_box select#category {
+.select_box select.category {
     width: 100%;
     height: 40px;
     min-height: 40px;

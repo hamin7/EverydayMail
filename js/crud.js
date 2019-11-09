@@ -22,9 +22,12 @@ $(function () {
         var newCategory = prompt("추가할 카테고리를 입력하세요");
         if (newCategory != null){
             if (newCategory == "")
-                alert('내용을 입력해주세요');
-            else
+                alert("내용을 입력해주세요");
+            else{
+                alert("'"+newCategory+"' 추가되었습니다");
+                $("#category").append('<option value="' + newCategory + '">' + newCategory+ '</option>');
                 insertCategory(newCategory);
+            }    
         }
     });
     $('#clearCategory').click(function () {
@@ -104,6 +107,31 @@ function initList(){
     $('.template_list').html(str);
 }
 
+function initSelectedList(category){
+    var str = "";
+    try {
+        var id = 0;
+        const myformList = JSON.parse(localStorage["myformList"]);
+
+        myformList.forEach(value => {
+            if(value.category == category){
+                var modified = replaceAll(value.contents, "<br/>", " ");
+
+                str += '<div class="row" id="' + id + '" > <img class="btn_delete" src="icons/remove_icon_32.png" /> ';
+                str += '<div class="row_click" onClick = "move(' + id + ')" >';
+                str += '<span class="row_category">' + value.category + '</span>';
+                str += '<h4 class="row_title">' + value.title + '</h4>';
+                str += '<p class="row_content">' + modified + '</p></div></div>';
+                id++;
+            }
+            
+        })
+    } catch (e) {
+
+    }
+
+    $('.template_list').html(str);
+}
 
 function initCheckList(id) {
 
@@ -136,8 +164,6 @@ function deleteItem(num) {
         });
 
         localStorage.setItem("myformList", JSON.stringify(data_arr));
-        // if (data_arr.length==0)
-        //어떡하냐!!!!!!!!!1
 
         location.reload();
     }
@@ -163,7 +189,6 @@ function insertCategory(category) {
     categoryList.push(category);
     localStorage.setItem("categoryList", JSON.stringify(categoryList));
 
-    //추가하고 새로고침해야 사용 가능
     
 }
 
@@ -181,4 +206,5 @@ function initCategory(id) {
         
     }
     $('#category').append(str);
+    $('#picker').append(str);
 }
