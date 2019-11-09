@@ -155,6 +155,7 @@ function initSelectedList(category, list){
 function initCheckList(list, id) {
 
     var data_arr = JSON.parse(localStorage[list]);
+    var title = data_arr[id].title;
     var contentSplit = data_arr[id].contents.split('<br/>');
     
     var str = "";
@@ -162,11 +163,9 @@ function initCheckList(list, id) {
         str += '<input type="checkbox" id="line'+i +'"  class="chk" name="chk" checked="true"/> ';
         str += '<label for="line' + i + '"><input type="text" id="text_line' + i + '" value="' + contentSplit[i] + '"></label>';
     }
-    
+    $('.comment_title').append(title);
     $('#check_list').html(str);
 }
-
-
 
 
 function deleteItem(num) {
