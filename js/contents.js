@@ -58,8 +58,6 @@ function insertTemplate() {
     templateList.push(new myform(20, "영어메일","배송비를 냈는데, 프리쉽 코드가 떴을 때 요청 메일", "I'm e-mailing you for my order #주문 오더번호 placed on 주문 날짜<br/>I placed an order, and paid for shipping fee. However, it is possible to get a free-shipping now.<br/>Could you apply the free-shipping to my order please?<br/>I would like to get a refund on the shipping fee. Thank you.<br/>")); 
     templateList.push(new myform(21, "영어메일","빌링주소가 잘못됐다는 메일을 받았을 때", "Dear. Customer Service,<br/>Hi, thanks for notifying me about the issue regarding my Billing Address. I appreciate it.<br/>I completed the payment process with my credit card issued by a bank in Korea and I presume that is the reason my order was not completed.<br/>The billing address I provided is not the correct one.<br/>Since your payment system only provides the format for U.S. Addresses, I was not able to submit my Korean billing address.<br/>Here is my Billing Address in the below :<br/>Billing Address<br/>영어로 한국 주소<br/>I'm sure this will work just fine. If you have any other problems, please let me know.<br/>Thank You.<br/>")); 
     
-    
-
     localStorage.setItem("templateList", JSON.stringify(templateList));
      
 }
