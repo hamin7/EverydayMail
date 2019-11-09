@@ -89,26 +89,34 @@ $(document).ready(function() {
 
 // Crawling
 function crawl() {
+
+    alert('1')
     function parseResult(html) {
       const dataToSave = {};
+
+      
   
       const fragment = document.createElement('DIV');
       fragment.innerHTML = html;
-  
-      const divs = fragment.querySelectorAll('.panel-group clearfix');
+
+      
+
+      const divs = fragment.querySelectorAll('.panel clearfix');
       divs.forEach((div) => {
-        /*
+        
+
+
         let value = '';
-        value = 
-        const title = th.innerHTML;
-        if (title.includes('운영시간')) {
-          value = th.closest('tr').querySelector('td pre').innerHTML;
-          dataToSave.title = value;
-        } else if (title.includes('식당명')) {
-          value = th.closest('tr').querySelector('td').innerHTML;
-          dataToSave.body = value;
-        }
-        */
+        // const title = h4.innerHTML;
+        value = div.closest('h4').innerHTML;
+        dataToSave.title = value;
+
+        let value = '';
+        value = div.closest('.panel-body').innerHTML;
+        dataToSave.body = value;
+        
+        
+        
       });
 
         whale.storage.local.set({
@@ -118,6 +126,7 @@ function crawl() {
     }
   
     function fetchUrl() {
+        alert('1');
       fetch(`http://bizmail.yesform.com/list/list.php`)
         .then(result => result.text())
         .then(html => parseResult(html));
@@ -130,13 +139,14 @@ function crawl() {
   
 $(document).ready(function() {
     $('#btn_ajax').click(function() {
-        crawl();
         alert("크롤링 및 파싱 됨");
+        //crawl();
+        
     })
 });
 
 $(document).ready(function() {
-    $('#btn_shaw').click(function() {
+    $('#btn_show').click(function() {
         alert("보여줄게오");
     })
 });
