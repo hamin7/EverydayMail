@@ -2,7 +2,6 @@ $(function () {
     
     $('#btn_template').click(function () {
         initTemplateList();
-
     });
 });
 function initTemplateList(){
