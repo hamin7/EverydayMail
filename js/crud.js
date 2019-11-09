@@ -1,6 +1,6 @@
 
 $(function () {
-    initList("myformList");
+    initList('myformList');
     initCategory();
 
     $('#btn_insert').click(function () {
@@ -55,7 +55,6 @@ $(function () {
     });
     
 
-
 })
 
 
@@ -104,7 +103,8 @@ function initList(list){
             var modified = replaceAll(value.contents,"<br/>", " ");
             
             str += '<div class="row" id="'+id+'" > <img class="btn_delete" src="icons/remove_icon_32.png" /> ';
-            str += '<div class="row_click" onClick = "move(' + id +')" >';
+            str += '<div class="row_click" onClick = "move(0,'+ id + ')" >';
+            // str += '<div class="row_click" onClick = "move('+list+  ',' + id +')" >';
             str += '<span class="row_category">' + value.category + '</span>';
             str += '<h4 class="row_title">' + value.title +'</h4>';
             str += '<p class="row_content">' + modified +'</p></div></div>';
@@ -121,6 +121,8 @@ function initList(list){
 
 
 function initSelectedList(category, list){
+    var flag = (list == "myformList")? 0:1;
+  
     var str = "";
     try {
         var id = 0;
@@ -131,7 +133,7 @@ function initSelectedList(category, list){
                 var modified = replaceAll(value.contents, "<br/>", " ");
 
                 str += '<div class="row" id="' + id + '" > <img class="btn_delete" src="icons/remove_icon_32.png" />';
-                str += '<div class="row_click" onClick = "move(' + id + ')" >';
+                str += '<div class="row_click" onClick = "move(' + flag +','+ id + ')" >';
                 str += '<span class="row_category">' + value.category + '</span>';
                 str += '<h4 class="row_title">' + value.title + '</h4>';
                 str += '<p class="row_content">' + modified + '</p></div></div>';

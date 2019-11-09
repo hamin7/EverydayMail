@@ -1,7 +1,8 @@
 $(function () {
     
     $('#btn_template').click(function () {
-        initTemplateList();
+   
+        initTemplateList("templateList");
         initTemplateCategory();
         $('#btn_newCategory').hide();
 
@@ -21,16 +22,16 @@ $(function () {
     });
     
 });
-function initTemplateList(){
+function initTemplateList(list){
     
     var templateList;
     try { 
-        templateList = JSON.parse(localStorage["templateList"]);
+        templateList = JSON.parse(localStorage[list]);
     
     } catch (e) {
         insertTemplate();
         insertTemplateCategory();
-        templateList = JSON.parse(localStorage["templateList"]);
+        templateList = JSON.parse(localStorage[list]);
     }
 
     var id = 0;
@@ -39,7 +40,7 @@ function initTemplateList(){
         var modified = replaceAll(value.contents, "<br/>", " ");
 
         str += '<div class="row" id="' + id + '" >  ';
-        str += '<div class="row_click" onClick = "move(' + id + ')" >';
+        str += '<div class="row_click" onClick = "move(1,'+ id + ')" >';
         str += '<span class="row_category">' + value.category + '</span>';
         str += '<h4 class="row_title">' + value.title + '</h4>';
         str += '<p class="row_content">' + modified + '</p></div></div>';
@@ -91,7 +92,6 @@ function initTemplateCategory() {
         for (var i = 0; i < categoryList.length; i++) {
             str += '<option value="' + categoryList[i] + '">' + categoryList[i] + '</option>';
         }
-
     } catch (e) {
     }
 

@@ -3,8 +3,12 @@ $(function () {
 
     var params = getUrlParams();
     var id= params.template_id;
+    var list_flag = params.list;
  
-    initCheckList("myformList",id);
+    if(list_flag == 0) 
+        initCheckList("myformList",id);
+    else if (list_flag == 1)
+        initCheckList("templateList", id);
 
     $("#selectAll").click(function () {
 
