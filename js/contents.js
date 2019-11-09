@@ -2,7 +2,23 @@ $(function () {
     
     $('#btn_template').click(function () {
         initTemplateList();
+        initTemplateCategory();
+
+        $("select#picker").change(function () {
+            alert(1);
+            var select_name = $(this).children("option:selected").text();
+            $(this).siblings("label").text(select_name);
+
+            if (select_name == "전체")
+                initTemplateList();
+            else
+                initSelectedTemplateList(select_name);
+
+        
+
+        });
     });
+    
 });
 function initTemplateList(){
     
@@ -12,6 +28,7 @@ function initTemplateList(){
     
     } catch (e) {
         insertTemplate();
+        insertTemplateCategory();
         templateList = JSON.parse(localStorage["templateList"]);
     }
 
@@ -31,6 +48,35 @@ function initTemplateList(){
     $('.template_list').html(str);
    
 }
+function initSelectedTemplateList(category){
+    
+
+    var str = "";
+    try {
+        var id = 0;
+        var templateList = JSON.parse(localStorage["templateList"]);
+
+        myformList.forEach(value => {
+            if (value.category == category) {
+                var modified = replaceAll(value.contents, "<br/>", " ");
+
+                str += '<div class="row" id="' + id + '" >';
+                str += '<div class="row_click" onClick = "move(' + id + ')" >';
+                str += '<span class="row_category">' + value.category + '</span>';
+                str += '<h4 class="row_title">' + value.title + '</h4>';
+                str += '<p class="row_content">' + modified + '</p></div></div>';
+
+            }
+            id++;
+        })
+
+    } catch (e) {
+
+    }
+
+    $('.template_list').html(str);
+
+}
 function insertTemplate() {
 
     var templateList = new Array();
@@ -48,4 +94,31 @@ function insertTemplate() {
 
     localStorage.setItem("templateList", JSON.stringify(templateList));
      
+}
+function initTemplateCategory() {
+
+    var str = '<option value="전체" selected="selected">전체</option>';
+    try {
+        const categoryList = JSON.parse(localStorage["templateCategoryList"]);
+
+        for (var i = 0; i < categoryList.length; i++) {
+            str += '<option value="' + categoryList[i] + '">' + categoryList[i] + '</option>';
+        }
+
+    } catch (e) {
+
+    }
+
+    $('#picker').html(str);
+}
+function insertTemplateCategory(category) {
+
+    
+    templateCategoryList = new Array();
+    
+    templateCategoryList.push("대학생용");//추가
+
+    localStorage.setItem("templateCategoryList", JSON.stringify(templateCategoryList));
+
+
 }

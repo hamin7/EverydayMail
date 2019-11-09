@@ -28,6 +28,7 @@ $(function () {
             else{
                 alert("'"+newCategory+"' 추가되었습니다");
                 $("#category").append('<option value="' + newCategory + '">' + newCategory+ '</option>');
+                $("#picker").append('<option value="' + newCategory + '">' + newCategory + '</option>');
                 insertCategory(newCategory);
             }    
         }
@@ -214,7 +215,7 @@ function insertCategory(category) {
     
 }
 
-function initCategory(id) {
+function initCategory() {
 
     var str = "";
     try {
@@ -230,3 +231,4 @@ function initCategory(id) {
     $('#category').append(str);
     $('#picker').append(str);
 }
+
