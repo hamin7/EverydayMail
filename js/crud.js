@@ -1,22 +1,18 @@
 
 $(function () {
-    initList();
+    initList("myformList");
     initCategory();
 
     $('#btn_insert').click(function () {
-        insertData();
-        
+        insertData();    
     });
 
     $('#clearList').click(function () {
         deleteAll();
     });
     
-    $('.btn_delete').click(function () {
-        var id = $(this).parents("div").prop("id");
-        
-        deleteItem(id);
-        
+    $('.btn_delete').click(function () {  
+        deleteItem($(this).parents("div").prop("id"));   
     });
     
 
@@ -25,11 +21,12 @@ $(function () {
         if (newCategory != null){
             if (newCategory == "")
                 alert("내용을 입력해주세요");
-            else{
-                alert("'"+newCategory+"' 추가되었습니다");
+            else{   
                 $("#category").append('<option value="' + newCategory + '">' + newCategory+ '</option>');
                 $("#picker").append('<option value="' + newCategory + '">' + newCategory + '</option>');
+
                 insertCategory(newCategory);
+                alert("'" + newCategory + "' 추가되었습니다");
             }    
         }
     });
@@ -40,13 +37,12 @@ $(function () {
         $(this).siblings("label").text(select_name);
 
         if(select_name=="전체") 
-            initList();
+            initList("myformList");
         else
-            initSelectedList(select_name);
+            initSelectedList(select_name, "myformList");
 
         $('.btn_delete').click(function () {
-            var id = $(this).parents("div").prop("id");
-            deleteItem(id);
+            deleteItem($(this).parents("div").prop("id"));
         });
 
     });
@@ -63,7 +59,6 @@ $(function () {
 })
 
 
-// my form 클래스.
 class myform {
     constructor(id, category, title, contents) {
         this.id = id;
@@ -73,13 +68,11 @@ class myform {
     }
 }
 
-// local storage에 myform 객체를 넣는 함수.
 function insertData() {
     
     var myform_title = $('#myform_title').val();
     var myform_category = $('#category option:selected').val();
     var myform_contents = $('#myform').val();
-
     myform_contents = myform_contents.replace(/(?:\r\n|\r|\n)/g, '<br/>');
 
     if (myform_title == "" || myform_contents=="")
@@ -92,22 +85,22 @@ function insertData() {
             myformList = new Array();
         }
         
-        var newItem = new myform(myformList.length, myform_category, myform_title, myform_contents);
-        myformList.push(newItem);
+        myformList.push(new myform(myformList.length, myform_category, myform_title, myform_contents));
         localStorage.setItem("myformList", JSON.stringify(myformList));
 
         location.replace("index.html");
     
     }
 }
-function initList(){
+function initList(list){
 
     var str ="";
     try{
         var id = 0;
-        var myformList = JSON.parse(localStorage["myformList"]);
+        var myformList = JSON.parse(localStorage[list]);
         
         myformList.forEach(value => {
+            
             var modified = replaceAll(value.contents,"<br/>", " ");
             
             str += '<div class="row" id="'+id+'" > <img class="btn_delete" src="icons/remove_icon_32.png" /> ';
@@ -120,19 +113,18 @@ function initList(){
         
         if (myformList.length == 0)
             str += '<div class="row">목록이 비어있습니다<br/>버튼을 눌러 새로운 템플릿을 작성하세요</div>'; 
-    }catch(e){
-        
+    }catch(e){  
     }
-    
 
     $('.template_list').html(str);
 }
 
-function initSelectedList(category){
+
+function initSelectedList(category, list){
     var str = "";
     try {
         var id = 0;
-        var myformList = JSON.parse(localStorage["myformList"]);
+        var myformList = JSON.parse(localStorage[list]);
 
         myformList.forEach(value => {
             if(value.category == category){
@@ -149,18 +141,16 @@ function initSelectedList(category){
         })
         
     } catch (e) {
-
     }
 
     $('.template_list').html(str);
 }
 
-function initCheckList(id) {
+function initCheckList(list, id) {
 
-    var data_arr = JSON.parse(localStorage["myformList"]);
-    var contents = data_arr[id].contents;
-
-    var contentSplit = contents.split('<br/>');
+    var data_arr = JSON.parse(localStorage[list]);
+    var contentSplit = data_arr[id].contents.split('<br/>');
+    
     var str = "";
     for (var i in contentSplit) {
         str += '<input type="checkbox" id="line'+i +'"  class="chk" name="chk" checked="true"/> ';

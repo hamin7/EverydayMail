@@ -3,18 +3,19 @@ $(function () {
     $('#btn_template').click(function () {
         initTemplateList();
         initTemplateCategory();
+        $('#btn_newCategory').hide();
 
         $("select#picker").change(function () {
-            alert(1);
             var select_name = $(this).children("option:selected").text();
             $(this).siblings("label").text(select_name);
 
             if (select_name == "전체")
                 initTemplateList();
-            else
-                initSelectedTemplateList(select_name);
-
-        
+            else{
+                initSelectedList(select_name, "templateList");
+                $('.btn_delete').hide();
+            }
+                
 
         });
     });
@@ -48,35 +49,7 @@ function initTemplateList(){
     $('.template_list').html(str);
    
 }
-function initSelectedTemplateList(category){
-    
 
-    var str = "";
-    try {
-        var id = 0;
-        var templateList = JSON.parse(localStorage["templateList"]);
-
-        myformList.forEach(value => {
-            if (value.category == category) {
-                var modified = replaceAll(value.contents, "<br/>", " ");
-
-                str += '<div class="row" id="' + id + '" >';
-                str += '<div class="row_click" onClick = "move(' + id + ')" >';
-                str += '<span class="row_category">' + value.category + '</span>';
-                str += '<h4 class="row_title">' + value.title + '</h4>';
-                str += '<p class="row_content">' + modified + '</p></div></div>';
-
-            }
-            id++;
-        })
-
-    } catch (e) {
-
-    }
-
-    $('.template_list').html(str);
-
-}
 function insertTemplate() {
 
     var templateList = new Array();
@@ -118,19 +91,18 @@ function initTemplateCategory() {
         }
 
     } catch (e) {
-
     }
 
     $('#picker').html(str);
 }
 function insertTemplateCategory(category) {
 
-    
     templateCategoryList = new Array();
     
-    templateCategoryList.push("대학생용");//추가
+    templateCategoryList.push("대학생용");
+    templateCategoryList.push("업무메일");
+    templateCategoryList.push("영어메일");
 
     localStorage.setItem("templateCategoryList", JSON.stringify(templateCategoryList));
-
 
 }
