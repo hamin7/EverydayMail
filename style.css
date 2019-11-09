@@ -287,14 +287,14 @@ a{
     text-decoration: none;
 }
 
-# tooltip {
+#tooltip {
     position: absolute;
     z-index: 999;
     color: white;
     font-size: 15px;
 }
 
-# tooltip .tipBody {
+#tooltip .tipBody {
     background-color: black;
     padding: 8px;
 }
