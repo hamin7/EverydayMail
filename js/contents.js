@@ -42,6 +42,5 @@ function insertTemplate() {
     templateList.push(new myform(4, "쇼핑메일","환불 요청 드립니다.", ""));
 
     localStorage.setItem("templateList", JSON.stringify(templateList));
-
      
 }
