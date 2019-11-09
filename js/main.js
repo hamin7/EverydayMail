@@ -14,7 +14,7 @@ $(document).ready(function() {
         $('#dropbtn_img').prop('src', 'icons/settings_icon_32.png');
     });
 
-    
+
     $("select#category").change(function () {
         var select_name = $(this).children("option:selected").text();
         $(this).siblings("label").text(select_name);
@@ -24,8 +24,8 @@ $(document).ready(function() {
 });
 
 
-var move = function (num) {
-    location.href = "edit.html?template_id=" + num;
+var move = function (list, num) {
+    location.href = "edit.html?list="+list+"&template_id=" + num;
 };
 
 function replaceAll(str, searchStr, replaceStr) {
