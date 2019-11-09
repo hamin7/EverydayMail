@@ -26,8 +26,14 @@ $(function () {
             else
                 insertCategory(newCategory);
         }
-       
     });
+    $('#clearCategory').click(function () {
+        localStorage.removeItem("categoryList");
+    });
+    $('#clearTemplate').click(function () {
+        localStorage.removeItem("templateList");
+    });
+    
 
 
 })
@@ -158,7 +164,7 @@ function insertCategory(category) {
     localStorage.setItem("categoryList", JSON.stringify(categoryList));
 
     //추가하고 새로고침해야 사용 가능
-
+    
 }
 
 function initCategory(id) {
