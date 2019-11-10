@@ -173,14 +173,16 @@ a{
     vertical-align: middle;
     font-family: NanumSquareL;
 }
-
+.comment_title{
+    margin: 10px;
+}
 
 .select_box {
     display: inline-block;
     vertical-align: middle;
-    width: 150px;
+    width: 130px;
     height: 26px;
-    background: url("icons/dropdown_arrow_icon_16.png") 130px center no-repeat; /* 화살표 이미지 */
+    background: url("icons/dropdown_arrow_icon_16.png") 110px center no-repeat; /* 화살표 이미지 */
     border: 1px solid #01D6B3;
     border-radius: 4px;
     font-family: NanumSquareL;
@@ -191,7 +193,7 @@ a{
     color:#01D6B3;
     margin: 6px;
     letter-spacing: 1px;
-    width:130px;
+    width:110px;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp:1;
