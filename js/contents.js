@@ -41,7 +41,7 @@ function initTemplateList(list){
         var modified = replaceAll(value.contents, "<br/>", " ");
 
         str += '<div class="row" id="' + id + '" >  ';
-        str += '<div class="row_click" onClick = "move(1,'+ id + ')" >';
+        str += '<div class="row_click" id="' + id + '">';
         str += '<span class="row_category">' + value.category + '</span>';
         str += '<h4 class="row_title">' + value.title + '</h4>';
         str += '<p class="row_content">' + modified + '</p></div></div>';
@@ -49,6 +49,9 @@ function initTemplateList(list){
     })
 
     $('.template_list').html(str);
+    $('.row_click').click(function () {
+        move(1, $(this).attr("id"));
+    });
    
 }
 
