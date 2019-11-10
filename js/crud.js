@@ -75,9 +75,9 @@ function insertData() {
     
     var myform_title = $('#myform_title').val();
     var myform_category = $('#category option:selected').val();
-    var myform_contents = $('#myform').val();
+    var myform_contents = $('#myform, #result').val();
     myform_contents = myform_contents.replace(/(?:\r\n|\r|\n)/g, '<br/>');
-
+    
     if (myform_title == "" || myform_contents=="")
         alert('제목을 입력해주세요');
     else {

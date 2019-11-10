@@ -31,9 +31,8 @@ $(function () {
     $("#btn_copy").hide();
     $("#btn_reSave").hide();
     $("#select_category").hide();
-    $("#btn_newCategory").hide();
     $("#myform_title").hide();
-    $("#btn_insert").hide();
+    $("#btn_insertNew").hide();
 
       
     $("#btn_cancel").click(function () {
@@ -46,6 +45,7 @@ $(function () {
             var line_id = $(this).attr("id");
             written_str += $("input[id='text_" + line_id + "']").val() + '\n';
         });
+        written_str = written_str.slice(0,-2);
 
         $("#edit_box").hide();
         $("#btn_complete").hide();
@@ -70,11 +70,14 @@ $(function () {
     });
     
     $('#btn_reSave').click(function () {
-        $(this).hide();
+        
+  
         $("#select_category").show();
-        $("#btn_newCategory").show();
         $("#myform_title").show();
-        $("#btn_insert").show();
+        $("#btn_insertNew").show();
+        $("#btn_insertNew").click(function(){
+            insertData(); 
+        });
     });
     
     
