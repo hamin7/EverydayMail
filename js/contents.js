@@ -12,7 +12,7 @@ $(function () {
             $(this).siblings("label").text(select_name);
 
             if (select_name == "전체")
-                initTemplateList();
+                initTemplateList("templateList");
             else{
                 initSelectedList(select_name, "templateList");
                 $('.btn_delete').hide();
