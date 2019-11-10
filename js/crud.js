@@ -51,6 +51,7 @@ $(function () {
 
     });
 
+    //삭제대상
     $('#clearCategory').click(function () {
         localStorage.removeItem("categoryList");
     });
@@ -116,8 +117,9 @@ function initList(list){
         })
         
         if (myformList.length == 0)
-            str += '<div class="row">목록이 비어있습니다<br/>버튼을 눌러 새로운 템플릿을 작성하세요</div>'; 
+            str += '<div class="row">목록이 비어있습니다<br/>하단의 버튼을 눌러 새로운 템플릿을 작성하세요</div>'; 
     }catch(e){  
+        str += '<div class="row">목록이 비어있습니다<br/>하단의 버튼을 눌러 새로운 템플릿을 작성하세요</div>'; 
     }
 
     $('.template_list').html(str);
@@ -189,9 +191,10 @@ function deleteItem(num) {
 }
 
 function deleteAll(){
-    var deleteAll = confirm("작성한 모든 템플릿이 삭제됩니다.\n계속하시겠습니까?");
+    var deleteAll = confirm("작성한 모든 템플릿과 카테고리가 삭제됩니다.\n계속하시겠습니까?");
     if(deleteAll){
         localStorage.removeItem("myformList");
+        localStorage.removeItem("categoryList");
 
         location.reload();
     }
