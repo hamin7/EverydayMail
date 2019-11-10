@@ -71,13 +71,13 @@ $(function () {
     
     $('#btn_reSave').click(function () {
         
-  
         $("#select_category").show();
         $("#myform_title").show();
         $("#btn_insertNew").show();
-        $("#btn_insertNew").click(function(){
-            insertData(); 
-        });
+       
+    });
+    $("#btn_insertNew").click(function () {
+        insertData();
     });
     
     
