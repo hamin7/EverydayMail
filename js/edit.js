@@ -70,7 +70,7 @@ $(function () {
     });
     
     $('#btn_reSave').click(function () {
-        
+        $(this).hide();
         $("#select_category").show();
         $("#myform_title").show();
         $("#btn_insertNew").show();
